@@ -1,0 +1,18 @@
+[0m[[0minfo[0m] [0mRunning yascc.Main test.grm[0m
+[0m[[0mdebug[0m] [0mStarting sandboxed run...[0m
+[0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
+[0m[[0mdebug[0m] [0m  Classpath:[0m
+[0m[[0mdebug[0m] [0m	/home/argson/ucsd/masters_project/code/target/scala-2.10/classes[0m
+[0m[[0mdebug[0m] [0m	/home/argson/.sbt/boot/scala-2.10.2/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	/home/argson/.ivy2/cache/com.github.scopt/scopt_2.10/jars/scopt_2.10-3.1.0.jar[0m
+[0m[[0mdebug[0m] [0m	/home/argson/.ivy2/cache/org.scalaz/scalaz-core_2.10/jars/scalaz-core_2.10-7.0.2.jar[0m
+[0m[[0mdebug[0m] [0m	/home/argson/.ivy2/cache/com.googlecode.kiama/kiama_2.10/jars/kiama_2.10-1.5.1.jar[0m
+[0m[[0mdebug[0m] [0m	/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsinfo/dsinfo_2.10/jars/dsinfo_2.10-0.2.0.jar[0m
+[0m[[0mdebug[0m] [0m	/home/argson/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.10.1.jar[0m
+[0m[[0mdebug[0m] [0m	/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsprofile/dsprofile_2.10/jars/dsprofile_2.10-0.2.0.jar[0m
+[0m[[0mdebug[0m] [0m	/home/argson/.ivy2/cache/jline/jline/jars/jline-1.0.jar[0m
+[0m[[0mdebug[0m] [0mWaiting for thread run-main to exit[0m
+[0m[[0mdebug[0m] [0m	Thread run-main exited.[0m
+[0m[[0mdebug[0m] [0mInterrupting remaining threads (should be all daemons).[0m
+[0m[[0mdebug[0m] [0mSandboxed run complete..[0m
+[0m[[0mdebug[0m] [0mExited with code 0[0m

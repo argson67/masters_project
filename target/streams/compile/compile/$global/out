@@ -1,0 +1,55 @@
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set()[0m
+[0m[[0mdebug[0m] [0m	modified: Set(/home/argson/ucsd/masters_project/code/src/main/scala/yascc/util/results.scala)[0m
+[0m[[0mdebug[0m] [0mRemoved products: Set()[0m
+[0m[[0mdebug[0m] [0mModified external sources: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/home/argson/ucsd/masters_project/code/src/main/scala/yascc/util/results.scala)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set()[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/argson/ucsd/masters_project/code/src/main/scala/yascc/util/results.scala)[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to /home/argson/ucsd/masters_project/code/target/scala-2.10/classes...[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.2[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.2[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 79504bd4, interfacing (CompilerInterface) with Scala compiler version 2.10.2[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-language:postfixOps[0m
+[0m[[0mdebug[0m] [0m	-unchecked[0m
+[0m[[0mdebug[0m] [0m	-deprecation[0m
+[0m[[0mdebug[0m] [0m	-feature[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/java/jdk1.7.0_25/jre/lib/resources.jar:/usr/java/jdk1.7.0_25/jre/lib/rt.jar:/usr/java/jdk1.7.0_25/jre/lib/sunrsasign.jar:/usr/java/jdk1.7.0_25/jre/lib/jsse.jar:/usr/java/jdk1.7.0_25/jre/lib/jce.jar:/usr/java/jdk1.7.0_25/jre/lib/charsets.jar:/usr/java/jdk1.7.0_25/jre/lib/jfr.jar:/usr/java/jdk1.7.0_25/jre/classes:/home/argson/.sbt/boot/scala-2.10.2/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/argson/ucsd/masters_project/code/target/scala-2.10/classes:/home/argson/.ivy2/cache/com.github.scopt/scopt_2.10/jars/scopt_2.10-3.1.0.jar:/home/argson/.ivy2/cache/org.scalaz/scalaz-core_2.10/jars/scalaz-core_2.10-7.0.2.jar:/home/argson/.ivy2/cache/com.googlecode.kiama/kiama_2.10/jars/kiama_2.10-1.5.1.jar:/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsinfo/dsinfo_2.10/jars/dsinfo_2.10-0.2.0.jar:/home/argson/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.10.1.jar:/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsprofile/dsprofile_2.10/jars/dsprofile_2.10-0.2.0.jar:/home/argson/.ivy2/cache/jline/jline/jars/jline-1.0.jar[0m
+[0m[[0mdebug[0m] [0mScala compilation took 0.772186408 s[0m
+[0m[[0mdebug[0m] [0mInvalidated by transitive public inheritance: Set(/home/argson/ucsd/masters_project/code/src/main/scala/yascc/util/results.scala)[0m
+[0m[[0mdebug[0m] [0mInvalidated by direct dependency: Set(/home/argson/ucsd/masters_project/code/src/main/scala/yascc/Main.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/Yascc.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/util/Implicits.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Init.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Sets.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/FileParser.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Phases.scala)[0m
+[0m[[0mdebug[0m] [0mNew invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set(/home/argson/ucsd/masters_project/code/src/main/scala/yascc/Main.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/Yascc.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/util/Implicits.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Init.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Sets.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/FileParser.scala, /home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Phases.scala)[0m
+[0m[[0mdebug[0m] [0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m
+[0m[[0minfo[0m] [0mCompiling 7 Scala sources to /home/argson/ucsd/masters_project/code/target/scala-2.10/classes...[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.2[0m
+[0m[[0mdebug[0m] [0mGetting compiler-interface from component compiler for Scala 2.10.2[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 474509cc, interfacing (CompilerInterface) with Scala compiler version 2.10.2[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-language:postfixOps[0m
+[0m[[0mdebug[0m] [0m	-unchecked[0m
+[0m[[0mdebug[0m] [0m	-deprecation[0m
+[0m[[0mdebug[0m] [0m	-feature[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/java/jdk1.7.0_25/jre/lib/resources.jar:/usr/java/jdk1.7.0_25/jre/lib/rt.jar:/usr/java/jdk1.7.0_25/jre/lib/sunrsasign.jar:/usr/java/jdk1.7.0_25/jre/lib/jsse.jar:/usr/java/jdk1.7.0_25/jre/lib/jce.jar:/usr/java/jdk1.7.0_25/jre/lib/charsets.jar:/usr/java/jdk1.7.0_25/jre/lib/jfr.jar:/usr/java/jdk1.7.0_25/jre/classes:/home/argson/.sbt/boot/scala-2.10.2/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/argson/ucsd/masters_project/code/target/scala-2.10/classes:/home/argson/.ivy2/cache/com.github.scopt/scopt_2.10/jars/scopt_2.10-3.1.0.jar:/home/argson/.ivy2/cache/org.scalaz/scalaz-core_2.10/jars/scalaz-core_2.10-7.0.2.jar:/home/argson/.ivy2/cache/com.googlecode.kiama/kiama_2.10/jars/kiama_2.10-1.5.1.jar:/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsinfo/dsinfo_2.10/jars/dsinfo_2.10-0.2.0.jar:/home/argson/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.10.1.jar:/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsprofile/dsprofile_2.10/jars/dsprofile_2.10-0.2.0.jar:/home/argson/.ivy2/cache/jline/jline/jars/jline-1.0.jar[0m
+[0m[[0mdebug[0m] [0mScala compilation took 1.278852804 s[0m
+[0m[[0mdebug[0m] [0mInvalidated by transitive public inheritance: Set()[0m
+[0m[[0mdebug[0m] [0mInvalidated by direct dependency: Set()[0m
+[0m[[0mdebug[0m] [0mNew invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m
+[0m[[0mdebug[0m] [0mPreviously invalidated, but (transitively) depend on new invalidations:[0m
+[0m[[0mdebug[0m] [0m	Set()[0m

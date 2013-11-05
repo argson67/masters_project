@@ -1,0 +1,14 @@
+#settings
+xy = "5"
+yz = "true"
+
+#grammar
+
+program ::= expr* -> Program
+          ;
+
+expr ::= expr "+" expr -> Plus
+       | expr "-" expr -> Minus
+       | expr "*" expr -> Times
+       | expr "/" expr -> Div
+       ;

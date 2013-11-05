@@ -1,0 +1,25 @@
+name := "YASCC"
+
+version := "0.1"
+
+scalaVersion := "2.10.2"
+
+scalacOptions ++= Seq("-language:postfixOps", "-unchecked", "-deprecation", "-feature")
+
+scalaSource in Compile <<= baseDirectory(_ / "src")
+
+//scalaSource in Compile <<= (sourceDirectory in Compile)(_ / "src")
+//libraryDependencies += "com.assembla.scala-incubator" % "graph-core_2.10" % "1.6.1"
+
+libraryDependencies ++= List(
+  // use the right Slick version here:
+  "com.typesafe.slick" %% "slick" % "1.0.1" withSources(),
+  "org.slf4j" % "slf4j-api" % "1.7.5",
+  "org.slf4j" % "slf4j-simple" % "1.7.5",
+  "mysql" % "mysql-connector-java" % "5.1.25",
+  "org.spire-math" %% "spire" % "0.5.0" withSources(),
+  "com.github.scopt" %% "scopt" % "3.1.0",
+  "org.scalaz" %% "scalaz-core" % "7.0.2" withSources()
+)
+
+//resolvers += "sonatype-public" at "https://oss.sonatype.org/content/groups/public"

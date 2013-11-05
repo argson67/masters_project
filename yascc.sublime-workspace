@@ -1,0 +1,322 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Countdo",
+				"CountdownEvent"
+			],
+			[
+				"Release",
+				"ReleaseInterval"
+			],
+			[
+				"is",
+				"isClosed"
+			],
+			[
+				"to",
+				"toSingle"
+			],
+			[
+				"Traver",
+				"TraversableOnce	"
+			],
+			[
+				"Error",
+				"ErrorApi	"
+			],
+			[
+				"Numeric",
+				"NumericTypeApi"
+			],
+			[
+				"PointerType",
+				"PointerTypeApi"
+			],
+			[
+				"Compiler",
+				"CompilerRepr	"
+			],
+			[
+				"symt",
+				"symtab	"
+			],
+			[
+				"Scala",
+				"ScalaNameApi	"
+			],
+			[
+				"CNa",
+				"CNameApi	"
+			],
+			[
+				"VDSNa",
+				"VDSNameApi	"
+			],
+			[
+				"Types",
+				"TypesApi	"
+			],
+			[
+				"Compil",
+				"CompilerRepr	"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"Ensime: Project"
+			],
+			[
+				"Snippet: ",
+				"Snippet: vds"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 159.0,
+		"history":
+		[
+			"sublime.packages_path()",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/argson/ucsd/masters_project/code/.ensime",
+		"/home/argson/fa2013/cse292/week3_notes",
+		"/home/argson/ucsd/masters_project/plan",
+		"/home/argson/fa2013/cse292/week3_summary",
+		"/home/argson/fa2013/cse292/week2",
+		"/home/argson/fa2013/cse292/week2_summary",
+		"/home/argson/fa2013/cse221/hw0/hw0.tex",
+		"/home/argson/work/netapp/temporals/src/main/scala/vds/Releases.scala",
+		"/home/argson/work/netapp/vdsNew/src/main/scala/vds/util/parsing/PackratParsers.scala",
+		"/home/argson/work/netapp/temporals/src/main/scala/vds/Temporal.scala",
+		"/home/argson/work/netapp/vdsNew/src/main/scala/vds/Releases.scala",
+		"/home/argson/work/netapp/vdsNew/src/main/scala/vds/api/Errors.scala",
+		"/home/argson/work/netapp/vdsNew/src/main/scala/vds/compiler/CompilerErrors.scala",
+		"/home/argson/.config/sublime-text-3/Packages/User/Scala.sublime-settings",
+		"/home/argson/work/netapp/vdsNew/src/main/scala/vds/compiler/netapp/ONTAPFrontEnd.scala",
+		"/home/argson/work/netapp/vdsNew/src/main/scala/vds/util/ProductReflection.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/trees/Trees.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/api/versioning/Releases.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/Temporals.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/CompilerErrors.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/Compiler.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/api/types/Types.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/versioning/Releases.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/netapp/ONTAPFrontEnd.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/api/Universe.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/api/types/TypeSystem.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/api/types/TypeConstructors.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/api/symtab/SymbolTable.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/api/symtab/Symbols.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/api/symtab/Names.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/api/symtab/Scopes.scala",
+		"/home/argson/.config/sublime-text-3/Packages/User/vds.sublime-snippet",
+		"/home/argson/scala/scala/src/reflect/scala/reflect/internal/Types.scala",
+		"/home/argson/scala/scala/src/reflect/scala/reflect/internal/Symbols.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/util/GraphvizDrawer.scala",
+		"/home/argson/.config/sublime-text-3/Packages/User/Ensime.sublime-settings",
+		"/home/argson/.config/sublime-text-3/Packages/Ensime/Ensime.sublime-settings",
+		"/home/argson/.config/sublime-text-3/Packages/User/Default.sublime-mousemap",
+		"/home/argson/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
+		"/home/argson/.config/sublime-text-3/Packages/Ensime/Default.sublime-mousemap",
+		"/home/argson/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
+		"/home/argson/.config/sublime-text-3/Packages/Ensime/Default (Linux).sublime-keymap",
+		"/home/argson/work/netapp/vdsNew/src/vds/repr/UserRepr.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/repr/CompilerRepr.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/versioning/Temporals.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/types/Kinds.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/CompilerFrontEnd.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/CompilerPass.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/Names.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/repr/UserRepr.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/repr/CompilerRepr.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/symtab/SymbolTable.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/symtab/Scopes.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/types/Implicits.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/compiler/symtab/Symbols.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/api/types/TypeSystemApi.scala",
+		"/home/argson/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+		"/home/argson/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/argson/work/netapp/vdsNew/src/vds/Compiler.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/CompilerErrors.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/Names.scala",
+		"/home/argson/resume/resume.tex",
+		"/home/argson/work/netapp/vdsNew/src/vds/trees/PatternTrees.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/trees/Trees.scala",
+		"/home/argson/work/netapp/vdsNew/.ensime",
+		"/home/argson/work/netapp/vdsNew/src/.ensime",
+		"/home/argson/work/netapp/vdsNew/src/vds/types/TypeParameters.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/types/Symbols.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/types/Types.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/types/TypeSystem.scala",
+		"/home/argson/work/netapp/vdsNew/src/vds/versioning/Releases.scala",
+		"/home/argson/netapp/simple/src/main/tits/repl/REPL.scala",
+		"/home/argson/netapp/simple/src/main/tits/instance/Instance.scala",
+		"/home/argson/netapp/simple/src/main/tits/parser/Parser.scala"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"/home/argson/work/netapp/vdsNew/src/",
+			"/home/argson/work/netapp/vdsNew/src/vds/repr"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"\"([^\"]*)\"",
+			"``([^']*)''",
+			"\"([^\"]*)\"",
+			"\n    Assuming that the namei cache is empty, succinctly describe what steps Unix will take, in terms of the disk data structures it must read, in order to resolve the path name \"/a/b/c\" and read the first byte of the file \"c\". How many disk reads are required?\n    Assuming \"/a/b/c\" has been resolved previously, now describe the steps Unix will take to resolve \"/a/b/x\" and read the first byte of the file \"x\". How many disk reads are required?\n    A common use of the command \"grep\" is to search all files in a directory for a string. Assume that the directory \"/a/b\" has n files. Assuming further that the namei cache starts out empty, how many disk reads are required to search all files using \"grep /a/b/*\"? State your answer as an expression involving n.\n    Now assume that we are using a file buffer cache as well. The file buffer cache will keep in memory all file, directory, and inode blocks that have been previously accessed. When they are accessed again, no disk I/Os are required. Assuming that both the file buffer cache and the namei cache start out empty, how many disk reads are required for the grep command in the previous problem now that we are using a file buffer cache as well?\n    Ignoring the issue of space (cache capacity), describe an example situation when an entry in the namei cache should be invalidated? \n",
+			"Range",
+			"Boundary",
+			"Short",
+			"toString",
+			"Extractor",
+			"repr"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"\\\\textbf{``$1''}",
+			"\\textbf{``$1''}",
+			"``$1''",
+			"``\\1''",
+			"Interval",
+			"Endpoint",
+			"Long",
+			"Int"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"project": "yascc.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 316.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

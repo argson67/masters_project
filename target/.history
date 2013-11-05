@@ -1,0 +1,18 @@
+clean
+console
+ls
+ensime-sbt
+ensime
+ensime generate
+compile
+run
+compile
+ls
+ensime
+ensime generate
+compile
+run
+run test.grm
+compile
+run test.grm
+compile

@@ -1,0 +1,600 @@
+[0m[[0minfo[0m] [0mUpdating {file:/home/argson/ucsd/masters_project/code/}code...[0m
+[0m[[0mdebug[0m] [0m:: resolving dependencies :: yascc#yascc_2.10;0.1[0m
+[0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool][0m
+[0m[[0mdebug[0m] [0m	validate = true[0m
+[0m[[0mdebug[0m] [0m	refresh = false[0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@46e23b20[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.2[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-library;2.10.2[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.10.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.github.scopt#scopt_2.10;3.1.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.github.scopt#scopt_2.10;3.1.0 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.github.scopt#scopt_2.10;3.1.0[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: com.github.scopt#scopt_2.10;3.1.0[0m
+[0m[[0mdebug[0m] [0m	found com.github.scopt#scopt_2.10;3.1.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scalaz#scalaz-core_2.10;7.0.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scalaz#scalaz-core_2.10;7.0.2 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scalaz#scalaz-core_2.10;7.0.2[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scalaz#scalaz-core_2.10;7.0.2[0m
+[0m[[0mdebug[0m] [0m	found org.scalaz#scalaz-core_2.10;7.0.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.googlecode.kiama#kiama_2.10;1.5.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.googlecode.kiama#kiama_2.10;1.5.1 {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.googlecode.kiama#kiama_2.10;1.5.1[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: com.googlecode.kiama#kiama_2.10;1.5.1[0m
+[0m[[0mdebug[0m] [0m	found com.googlecode.kiama#kiama_2.10;1.5.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0[0m
+[0m[[0mdebug[0m] [0m	found org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-reflect;2.10.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.10.1 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.10.1[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-reflect;2.10.1[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-reflect;2.10.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0[0m
+[0m[[0mdebug[0m] [0m	found org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving jline#jline;1.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: jline#jline;1.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: jline#jline;1.0[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: jline#jline;1.0[0m
+[0m[[0mdebug[0m] [0m	found jline#jline;1.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [test][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'provided'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'optional'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [optional][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [compile-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [runtime-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [optional][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [test-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [test][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.github.scopt#scopt_2.10;3.1.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.github.scopt#scopt_2.10;3.1.0 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scalaz#scalaz-core_2.10;7.0.2->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scalaz#scalaz-core_2.10;7.0.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-reflect;2.10.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.1->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.googlecode.kiama#kiama_2.10;1.5.1->jline#jline;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->com.googlecode.kiama#kiama_2.10;1.5.1 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'plugin'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [plugin][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'sources'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [sources][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'docs'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [docs][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'pom'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [pom][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'scala-tool'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for yascc#yascc_2.10;0.1 [scala-tool][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-compiler;2.10.2 [scala-tool->default][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-compiler;2.10.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-compiler;2.10.2[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-compiler;2.10.2[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-compiler;2.10.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-compiler;2.10.2 [scala-tool->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-compiler;2.10.2 [scala-tool->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->default][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->optional(default)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-reflect;2.10.2 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-reflect;2.10.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.10.2[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-reflect;2.10.2[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-reflect;2.10.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-reflect;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-reflect;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-reflect;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.2->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.2->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-compiler;2.10.2 [scala-tool->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-compiler;2.10.2 [scala-tool->optional(default)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#jline;2.10.2 [optional->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#jline;2.10.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#jline;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#jline;2.10.2[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#jline;2.10.2[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#jline;2.10.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#jline;2.10.2 [optional->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#jline;2.10.2->org.fusesource.jansi#jansi;1.4 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.fusesource.jansi#jansi;1.4 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.fusesource.jansi#jansi;1.4 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.fusesource.jansi#jansi;1.4[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.fusesource.jansi#jansi;1.4[0m
+[0m[[0mdebug[0m] [0m	found org.fusesource.jansi#jansi;1.4 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#jline;2.10.2->org.fusesource.jansi#jansi;1.4 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [scala-tool->default][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [scala-tool->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [scala-tool->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [scala-tool->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies yascc#yascc_2.10;0.1->org.scala-lang#scala-library;2.10.2 [scala-tool->optional(default)][0m
+[0m[[0mdebug[0m] [0m	resolved ivy file produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/yascc/yascc_2.10/0.1/resolved.xml.xml[0m
+[0m[[0mdebug[0m] [0m:: downloading artifacts ::[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-library;2.10.2!scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.github.scopt#scopt_2.10;3.1.0!scopt_2.10.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalaz#scalaz-core_2.10;7.0.2!scalaz-core_2.10.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scalaz#scalaz-core_2.10;7.0.2!scalaz-core_2.10.jar(src)[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.googlecode.kiama#kiama_2.10;1.5.1!kiama_2.10.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.googlecode.kiama#kiama_2.10;1.5.1!kiama_2.10.jar(src)[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.bitbucket.inkytonik.dsinfo#dsinfo_2.10;0.2.0!dsinfo_2.10.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.bitbucket.inkytonik.dsprofile#dsprofile_2.10;0.2.0!dsprofile_2.10.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] jline#jline;1.0!jline.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-reflect;2.10.1!scala-reflect.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-compiler;2.10.2!scala-compiler.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-reflect;2.10.2!scala-reflect.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.2!jline.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 648ms :: artifacts dl 29ms[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 compile produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-compile.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 runtime produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-runtime.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 test produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-test.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 provided produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-provided.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 optional produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-optional.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 compile-internal produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-compile-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 runtime-internal produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-runtime-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 test-internal produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-test-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 plugin produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-plugin.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 sources produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-sources.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 docs produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-docs.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 pom produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-pom.xml[0m
+[0m[[0mdebug[0m] [0m	report for yascc#yascc_2.10;0.1 scala-tool produced in /home/argson/ucsd/masters_project/code/target/resolution-cache/reports/yascc-yascc_2.10-scala-tool.xml[0m
+[0m[[0mdebug[0m] [0m	resolve done (648ms resolve - 29ms download)[0m
+[0m[[0minfo[0m] [0mDone updating.[0m
