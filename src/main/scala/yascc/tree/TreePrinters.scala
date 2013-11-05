@@ -96,7 +96,7 @@ trait TreePrinters extends PrettyPrinter {
       // Internal types
 
       case Trait(name) => "Trait" <> parens(name)
-      case CaseClass(name, params, myParent) => "CaseClass" <> parens(name)
+      case CaseClass(name, params) => "CaseClass" <> parens(name)
       case UnknownType(name) => "Unknown" <> parens(printTree(name))
 
       // Tree defs

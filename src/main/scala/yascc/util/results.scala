@@ -16,15 +16,15 @@ sealed abstract class Result[+T] {
   def warnings: Seq[Warning]
   def errors: Seq[Error]
 
-  def addError(error: Error, fatal: Boolean = false): Result[_]
+  def addError(error: Error, fatal: Boolean = false): Result[_ <: T]
   def addWarning(warning: Warning): Result[T]
 
   def foreach[A](f: (T) => A): Unit
   def map[A](f: (T) => A): Result[A]
   def flatMap[A](f: (T) => Result[A]): Result[A]
 
-  def :+[A](other: Result[A]) = other flatMap (_ => this)
-  def +:[A](other: Result[A]) = flatMap (_ => other)
+  def :+[A](other: Result[A]): Result[T] = other flatMap (_ => this)
+  def +:[A](other: Result[A]): Result[T] = :+(other)
 
   def get: T
 }

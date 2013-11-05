@@ -8,8 +8,11 @@ object Main {
     } else {
       val fname = args(0)
       val instance = new Yascc()
-      val res = instance.readFile(fname) map instance.prettyPrintTree
-      println(res)
+      val tree = instance.readFile(fname)
+      val initTree = instance.runPhase(instance.InitPhase, tree)
+
+      println(initTree map instance.prettyPrintTree)
+      println(instance.listAll)
     }
   }
 }

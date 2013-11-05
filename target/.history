@@ -16,3 +16,4 @@ run test.grm
 compile
 run test.grm
 compile
+run test.grm

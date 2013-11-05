@@ -18,13 +18,40 @@ trait Init {
         case Grammar(rules) => Result.chain(rules)(initRule)
       }
 
-      private def initRule(r: Rule): Result[Unit] = ???
+      private def initRule(r: Rule): Result[Unit] = {
+        registerRule(r)
+        defineRule(r) match {
+          case Some(e) => Result.unit.addError(e)
+          case None => Result.unit
+        }
+      }
 
-      private def initDecl(d: Declaration): Result[Unit] = ???
+      private def initDecl(d: Declaration): Result[Unit] = {
+        defineValue(d) match {
+          case Some(e) => Result.unit.addError(e)
+          case None => Result.unit
+        }
+      }
 
-      private def initTreeDef(td: TreeDef): Result[Unit] = ???
+      private def initTreeDef(td: TreeDef): Result[Unit] = {
+        val tpe = td match {
+          case TreeBranch(name, children) =>
+            Result.chain(children)(initTreeDef) +: Trait(name).success
+          case TreeLeaf(name, params) =>
+            CaseClass(name, params).success
+        }
 
-      private def initSetting(s: Setting): Result[Unit] = ???
+        tpe flatMap (tpe =>
+          defineType(td.name, tpe) match {
+            case Some(e) => Result.unit.addError(e)
+            case None => Result.unit
+        })
+      }
+
+      private def initSetting(s: Setting): Result[Unit] = {
+        setSetting(s.name, s.value)
+        Result.unit
+      }
 
       private def init(f: File): Result[Unit] = 
         Result.chain(f.sections)(initSection)

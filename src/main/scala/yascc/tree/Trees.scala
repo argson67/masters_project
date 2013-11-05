@@ -52,7 +52,7 @@ case TypeProjection(tpe, name) =>
 // Internal types
 
 case Trait(name) =>
-case CaseClass(name, params, myParent) =>
+case CaseClass(name, params) =>
 case UnknownType(name) =>
 
 // Tree defs
@@ -236,7 +236,7 @@ object Trees {
 
   }
 
-  case class CaseClass(name: String, params: Seq[(String, ParamType)], myParent: Trait) extends ScalaType {
+  case class CaseClass(name: String, params: Seq[(String, ParamType)]) extends ScalaType {
 
   }
 
@@ -251,7 +251,7 @@ object Trees {
   }
 
   sealed abstract class TreeDef() extends Tree {
-
+    val name: String
   }
 
   case class TreeBranch(name: String, myChildren: Seq[TreeDef]) extends TreeDef {
