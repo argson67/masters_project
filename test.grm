@@ -7,8 +7,14 @@ yz = "true"
 program ::= expr* -> Program
           ;
 
-expr ::= expr "+" expr -> Plus
-       | expr "-" expr -> Minus
-       | expr "*" expr -> Times
-       | expr "/" expr -> Div
+expr ::= add "*" add -> Times
        ;
+
+add ::= num "+" num -> Plus
+      ;
+
+num ::= r"[0-9]+" -> Num
+      ;
+
+//expr ::= (5 | 10) -> Test
+//       ;

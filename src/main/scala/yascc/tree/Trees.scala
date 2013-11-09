@@ -1,18 +1,18 @@
 package yascc.tree
 
 import scala.util.parsing.input.Positional
-import scala.collection.mutable.{ Set => MSet }
+//import scala.collection.mutable.{ Set => MSet }
 
 import org.kiama.attribution.Attributable
 
 /*
 Pattern matching on trees
 
+case File(sections) =>
+
 // Identifiers
 case Path(prefix, name) =>
 case Name(name) =>
-
-case File(sections) =>
 
 // Grammar
 case Grammar(rules) =>
@@ -28,6 +28,7 @@ case Opt(elem) =>
 case Discard(elem) =>
 case Rep(elem, sep, strict) =>
 case Label(elem, label) =>
+case NonTerminal(name) =>
 
 // Terminals
 case NumberLiteral(num) =>
@@ -54,6 +55,7 @@ case TypeProjection(tpe, name) =>
 case Trait(name) =>
 case CaseClass(name, params) =>
 case UnknownType(name) =>
+case ErrorType =>
 
 // Tree defs
 case TreeDefs(defs) =>
@@ -79,11 +81,11 @@ case Grammar(rules) =>
 */
 
 object Trees {
-  sealed abstract class Tree extends Positional with Attributable {
+  sealed abstract class Tree extends Product with Positional with Attributable {
 
   }
 
-  sealed abstract class Identifier() extends ProductionElem {
+  sealed abstract class Identifier() extends Tree {
 
   }
 
@@ -113,9 +115,11 @@ object Trees {
 
   case class Rule(name: String, options: Seq[RuleOption], productions: Seq[Production]) extends Tree {
     var refCount: Int = 0
-    var firstSet: MSet[String] = MSet.empty
-    var followSet: MSet[String] = MSet.empty
+    var firstSet: Set[Terminal] = Set.empty
+    var followSet: Set[Terminal] = Set.empty
   }
+
+  val ErrorRule = Rule("ERROR", Seq.empty, Seq.empty)
 
   case class RuleOption(name: String, value: Option[String]) extends Tree {
 
@@ -155,8 +159,12 @@ object Trees {
 
   }
 
-  sealed abstract class Terminal extends ProductionElem {
+  case class NonTerminal(name: String) extends ProductionElem {
 
+  }
+
+  sealed abstract class Terminal extends ProductionElem {
+    
   }
 
   case class NumberLiteral[T : Numeric](num: T) extends Terminal {
@@ -177,7 +185,7 @@ object Trees {
   }
 
   case object Epsilon extends Terminal {
-    
+    override def toString = "\u03B5" // :-)
   }
 
   /* Actions */
@@ -227,6 +235,10 @@ object Trees {
   }
 
   case class TypeProjection(tpe: ScalaType, name: String) extends ScalaType {
+
+  }
+
+  case object ErrorType extends ScalaType {
 
   }
 

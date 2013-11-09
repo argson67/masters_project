@@ -1,9 +1,7 @@
 package yascc.analysis
 
 import yascc.tree.Trees._
-import yascc.util.Result
-
-import org.kiama.attribution.Attribution._
+import yascc.util.{ Result, UResult }
 
 trait Init {
   self: Phases =>
@@ -11,53 +9,29 @@ trait Init {
     object InitPhase extends Phase {
       import yascc.util.Implicits._
 
-      private def initSection: Function1[Section, Result[Unit]] = {
-        case Settings(defs) => Result.chain(defs)(initSetting)
-        case Declarations(decls) => Result.chain(decls)(initDecl)
-        case TreeDefs(defs) => Result.chain(defs)(initTreeDef)
-        case Grammar(rules) => Result.chain(rules)(initRule)
+      def init(t: Tree) = query(t) {
+        case Setting(name, value) => 
+          setSetting(name, value)
+          OK
+        case decl: Declaration =>
+          defineValue(decl)
+        case TreeBranch(name, _) =>
+          defineType(name, Trait(name) setPos t.pos)
+        case TreeLeaf(name, params) =>
+          defineType(name, CaseClass(name, params) setPos t.pos)
+        case r: Rule =>
+          registerRule(r)
+          defineRule(r)
       }
 
-      private def initRule(r: Rule): Result[Unit] = {
-        registerRule(r)
-        defineRule(r) match {
-          case Some(e) => Result.unit.addError(e)
-          case None => Result.unit
-        }
+      def countRefs(t: Tree) = query(t) {
+        case NonTerminal(name) =>
+          for   (r <- lookupRule(name, t.pos))
+          yield (r.r.refCount += 1)
       }
-
-      private def initDecl(d: Declaration): Result[Unit] = {
-        defineValue(d) match {
-          case Some(e) => Result.unit.addError(e)
-          case None => Result.unit
-        }
-      }
-
-      private def initTreeDef(td: TreeDef): Result[Unit] = {
-        val tpe = td match {
-          case TreeBranch(name, children) =>
-            Result.chain(children)(initTreeDef) +: Trait(name).success
-          case TreeLeaf(name, params) =>
-            CaseClass(name, params).success
-        }
-
-        tpe flatMap (tpe =>
-          defineType(td.name, tpe) match {
-            case Some(e) => Result.unit.addError(e)
-            case None => Result.unit
-        })
-      }
-
-      private def initSetting(s: Setting): Result[Unit] = {
-        setSetting(s.name, s.value)
-        Result.unit
-      }
-
-      private def init(f: File): Result[Unit] = 
-        Result.chain(f.sections)(initSection)
 
       def apply(in: Result[Tree]): Result[Tree] = in flatMap {
-        case f: File => in :+ init(f)
+        case f: File => in :+ init(f) :+ countRefs(f)
         case other => error(s"Root of the AST is not a File but '$other'")
       }
     }

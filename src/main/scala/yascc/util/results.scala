@@ -30,6 +30,8 @@ sealed abstract class Result[+T] {
 }
 
 object Result {
+  // TODO: rewrite
+
   def chain[A](seq: Seq[A])(f: A => Result[Unit]) = 
     seq.foldLeft(unit) {
       (soFar, e) => soFar flatMap (_ => f(e))
@@ -38,6 +40,19 @@ object Result {
   def chainAny[A, B, C](start: Result[A], seq: Seq[B])(f: B => Result[C]) =
     seq.foldLeft(start) {
       (soFar, e) => soFar :+ (f(e))
+    }
+
+  def sequence[A](seq: Seq[Result[A]]): Result[Seq[A]] = seq.foldLeft(Success(Seq.empty[A]): Result[Seq[A]]) {
+      (soFar, r) => 
+        for ( res <- soFar
+            ; e <- r
+            ) yield res :+ e
+  }
+
+  def fromOption[A](opt: Option[Result[A]]): Result[Option[A]] = 
+    opt match {
+      case Some(a) => a map (Some(_))
+      case None => Success(None)
     }
 
   val unit: Result[Unit] = Success(())
@@ -81,6 +96,15 @@ case class Failure[T](value: T, errors: Seq[Error], warnings: Seq[Warning] = Nil
   }
 
   val get = value
+}
+
+// UResult = Usable result, i.e. result that carries some kind of value
+object UResult {
+  def unapply[T](x: Result[T]) = x match {
+    case Success(v, _) => Some(v)
+    case Failure(v, _, _) => Some(v)
+    case _ => None
+  }
 }
 
 case class FatalError(errors: Seq[Error], warnings: Seq[Warning] = Nil) extends NoSuccess[Nothing](errors, warnings) {
