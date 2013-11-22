@@ -51,6 +51,8 @@ object TreePrinter extends PrettyPrinter {
         nest(lsep(elems map printTree, softline <> "|"))
       case Opt(elem) =>
         parens(printTree(elem)) <> "?"
+      case Commit(elem) =>
+        parens(printTree(elem)) <> "!"
       case Discard(elem) =>
         brackets(printTree(elem))
       case Rep(elem, sep, strict) =>
@@ -75,6 +77,8 @@ object TreePrinter extends PrettyPrinter {
         printTree(fun)
       case CustomAction(code, tpe) =>
         "{%" <@> code <@> "%}" <+> colon <+> printTree(tpe)
+      case DefaultAction =>
+        "[default action]"
 
       // Types
       case UnTyped => "*untyped*"
@@ -96,10 +100,13 @@ object TreePrinter extends PrettyPrinter {
 
       // Internal types
 
-      case Trait(name) => "Trait" <> parens(name)
-      case CaseClass(name, params) => "CaseClass" <> parens(name)
+      case Trait(name, parentOpt) => "Trait" <> parens(name)
+      case CaseClass(name, params, parentOpt) => "CaseClass" <> parens(name)
       case UnknownType(name) => "Unknown" <> parens(printTree(name))
       case ErrorType => "ERROR"
+      case TVar(name) => name
+      case AnyType => "Any"
+      case NothingType => "Nothing"
 
       // Tree defs
       case TreeDefs(defs) =>

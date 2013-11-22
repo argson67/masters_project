@@ -24,7 +24,7 @@ trait GrammarParser {
 
     // A production is a conjunction of terms, followed by an action
 
-    private[GrammarParser] lazy val production: PackratParser[Production] = positioned(conjunction ~ ("->" ~> action) ^^ {
+    private[GrammarParser] lazy val production: PackratParser[Production] = positioned(conjunction ~ ("->" ~> action | success(DefaultAction)) ^^ {
       case t ~ a => Production(t, a)
     })
 
@@ -65,14 +65,20 @@ trait GrammarParser {
       | labeledTerm)
 
     private[GrammarParser] lazy val labeledTerm: PackratParser[ProductionElem] = positioned(
-      simpleTerm ~ ("<?>" ~> string) ^^ {
+      committedTerm ~ ("<?>" ~> string) ^^ {
         case t ~ label => Label(t, label)
       }
-      | simpleTerm
+      | committedTerm
       )
 
+    private[GrammarParser] lazy val committedTerm: PackratParser[ProductionElem] = positioned(
+      simpleTerm ~ opt("!") ^^ {
+        case t ~ Some(_) => Commit(t)
+        case t ~ None => t
+      })
+
     private[GrammarParser] lazy val simpleTerm: PackratParser[ProductionElem] = positioned(
-      braces(disjunction) ^^ Discard.apply
+      brackets(disjunction) ^^ Discard.apply
       | parens(disjunction) 
       | identifier ^^ NonTerminal.apply
       | string ^^ StringLiteral.apply

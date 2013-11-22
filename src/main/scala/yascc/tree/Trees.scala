@@ -5,6 +5,8 @@ import scala.util.parsing.input.Positional
 
 import org.kiama.attribution.Attributable
 
+import yascc.util.{ Substitution, Substitutable }
+
 /*
 Pattern matching on trees
 
@@ -25,6 +27,7 @@ case Production(body, action) =>
 case Conjunction(elems) =>
 case Disjunction(elems) =>
 case Opt(elem) =>
+case Commit(elem) =>
 case Discard(elem) =>
 case Rep(elem, sep, strict) =>
 case Label(elem, label) =>
@@ -40,6 +43,7 @@ case Epsilon =>
 // Actions
 case FunctionAction(fun) =>
 case CustomAction(code, tpe) =>
+case DefaultAction =>
 
 // Types
 case UnTyped =>
@@ -49,13 +53,16 @@ case TupleType(elems) =>
 case SimpleType(name) =>
 case TypeApp(constructor, args) =>
 case TypeProjection(tpe, name) =>
+case TVar(name) =>
 
 // Internal types
 
-case Trait(name) =>
-case CaseClass(name, params) =>
+case Trait(name, parentOpt) =>
+case CaseClass(name, params, parentOpt) =>
 case UnknownType(name) =>
 case ErrorType =>
+case AnyType =>
+case NothingType =>
 
 // Tree defs
 case TreeDefs(defs) =>
@@ -86,14 +93,16 @@ object Trees {
   }
 
   sealed abstract class Identifier() extends Tree {
-
+    def canonicalName: String
   }
 
   case class Path(prefix: Identifier, name: Name) extends Identifier {
-
+    val canonicalName = s"${prefix.canonicalName}.${name.canonicalName}"
   }
 
-  case class Name(name: String) extends Identifier
+  case class Name(name: String) extends Identifier {
+    val canonicalName = name
+  }
 
   // TODO: Maybe separate these into... separate files? 
 
@@ -132,31 +141,35 @@ object Trees {
   /* Production elements */
 
   sealed abstract class ProductionElem extends Tree {
-
+    def isDiscarded: Boolean = false
   }
 
   case class Conjunction(elems: Seq[ProductionElem]) extends ProductionElem {
-
+    override val isDiscarded = elems.size == 1 && elems.head.isDiscarded
   }
 
   case class Disjunction(elems: Seq[ProductionElem]) extends ProductionElem {
-
+    override val isDiscarded = elems.size == 1 && elems.head.isDiscarded
   }
 
   case class Opt(elem: ProductionElem) extends ProductionElem {
+    override val isDiscarded = elem.isDiscarded
+  }
 
+  case class Commit(elem: ProductionElem) extends ProductionElem {
+    override val isDiscarded = elem.isDiscarded
   }
 
   case class Discard(elem: ProductionElem) extends ProductionElem {
-
+    override val isDiscarded = true
   }
 
   case class Rep(elem: ProductionElem, sep: Option[ProductionElem] = None, strict: Boolean = false) extends ProductionElem {
-
+    override val isDiscarded = elem.isDiscarded
   }
 
   case class Label(elem: ProductionElem, label: String) extends ProductionElem {
-
+    override val isDiscarded = elem.isDiscarded
   }
 
   case class NonTerminal(name: String) extends ProductionElem {
@@ -202,40 +215,148 @@ object Trees {
 
   }
 
+  case object DefaultAction extends Action {
+
+  }
+
   /* Types */
 
   // TODO
 
-  sealed abstract class ScalaType() extends Tree {
+  import yascc.util.Result
+  import yascc.util.Implicits._
 
+  
+  implicit class BoolResOps(b: Boolean) {
+    def ||(rb: => Result[Boolean]): Result[Boolean] =
+      if (b) true.success else rb
+    def &&(rb: => Result[Boolean]): Result[Boolean] =
+      if (!b) false.success else rb
+  }
+
+  implicit class ResBoolOps(rb: Result[Boolean]) {
+    def ||(rb1: => Result[Boolean]): Result[Boolean] = 
+      rb flatMap { b => if (b) true.success else rb1 }
+    //def ||(b1: => Boolean): Result[Boolean] = 
+    //  rb map { b => b || b1 }
+
+    def &&(rb1: => Result[Boolean]): Result[Boolean] = 
+      rb flatMap { b => if (!b) false.success else rb1 }
+    //def &&(b1: => Boolean): Result[Boolean] = 
+    //  rb map { b => b && b1 }
+  }
+
+  sealed abstract class ScalaType() extends Tree with Substitutable[ScalaType] {
+    def :< (other: ScalaType)(implicit lookupType: Identifier => ScalaType): Result[Boolean] = {
+
+      //println(s"*** CALLING $this :< $other")
+
+      val rOther = other match {
+        case SimpleType(n) => lookupType(n)
+        case other => other
+      }
+
+      val res = (this == rOther) || (rOther == AnyType) || _isSubtypeOf(rOther)
+      if (this.isInstanceOf[UnknownType]) {
+        res.addWarning(s"Cannot check whether $this conforms to $other, $this is an unknown type.")
+      } else if (rOther.isInstanceOf[UnknownType]) {
+        res.addWarning(s"Cannot check whether $this conforms to $other, $other is an unknown type.")
+      } else {
+        res
+      }
+    }
+
+    def :> (other: ScalaType)(implicit lookupType: Identifier => ScalaType): Result[Boolean] = 
+      other :< this
+
+    protected def _isSubtypeOf(other: ScalaType)(implicit lookupType: Identifier => ScalaType): Result[Boolean] = 
+      false.success
+
+    def substitute(sub: Substitution) = this
+
+    lazy val freeVars: Set[TVar] = Set.empty
+
+    override def toString = TreePrinter(this)
   }
 
   case object UnTyped extends ScalaType {
 
   }
 
-  case class FunctionType(args: Seq[ScalaType], returnType: ScalaType) extends ScalaType {
+  case class FunctionType(args: Seq[ParamType], returnType: ScalaType) extends ScalaType {
+    override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = other match {
+      case FunctionType(otherArgs, otherReturnType) =>
+        Result.sequence((args zip otherArgs) map { case (t1, t2) => t2 :< t1 }) map (_.forall(identity))
 
+        (args zip otherArgs map { case (t1, t2) => t2 :< t1 } reduce (_ && _)) && returnType :< otherReturnType
+      case _ => false.success
+    }
+
+    override def substitute(sub: Substitution) = 
+      FunctionType(args map (_ substitute sub), returnType.substitute(sub)) setPos pos
+
+    override lazy val freeVars = (args flatMap (_.freeVars) toSet) ++ returnType.freeVars
   }
 
   case class ParamType(tpe: ScalaType, isLazy: Boolean = true, isRep: Boolean = true) extends ScalaType {
+    override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = other match {
+      case ParamType(otherTpe, _, otherIsRep) if isRep == otherIsRep =>
+        tpe :< otherTpe
+      case _ => false
+    }
 
+    override def substitute(sub: Substitution) = 
+      ParamType(tpe.substitute(sub), isLazy, isRep) setPos pos
+
+    override lazy val freeVars = tpe.freeVars
   }
 
   case class TupleType(elems: Seq[ScalaType]) extends ScalaType {
+    override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = other match {
+      case TupleType(otherElems) => 
+        elems zip otherElems map { case (t1, t2) => t1 :< t2 } reduce (_ && _)
+      case _ => false
+    }
 
+    override def substitute(sub: Substitution) =
+      TupleType(elems map (_ substitute sub)) setPos pos
+
+    override lazy val freeVars = elems flatMap (_.freeVars) toSet
   }
 
   case class SimpleType(name: Identifier) extends ScalaType {
+    override def :< (other: ScalaType)(implicit lookupType: Identifier => ScalaType): Result[Boolean] = 
+      lookupType(name) :< other
+  }
 
+  case object AnyType extends ScalaType {
+
+  }
+
+  case object NothingType extends ScalaType {
+    // Nothing is a subtype of everything
+    override protected def _isSubtypeOf(other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
+      true
   }
 
   case class TypeApp(constructor: ScalaType, args: Seq[ScalaType]) extends ScalaType {
+    override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
+      false // TODO
 
+    override def substitute(sub: Substitution) =
+      TypeApp(constructor.substitute(sub), args map (_ substitute sub)) setPos pos
+
+    override lazy val freeVars = (args flatMap (_.freeVars) toSet) ++ constructor.freeVars
   }
 
   case class TypeProjection(tpe: ScalaType, name: String) extends ScalaType {
+    override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
+      false // TODO
 
+    override def substitute(sub: Substitution) =
+      TypeProjection(tpe.substitute(sub), name) setPos pos
+
+    override lazy val freeVars = tpe.freeVars
   }
 
   case object ErrorType extends ScalaType {
@@ -244,16 +365,31 @@ object Trees {
 
   // Internal
 
-  case class Trait(name: String) extends ScalaType {
-
+  case class Trait(name: String, parentOpt: Option[ScalaType]) extends ScalaType {
+    override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
+      parentOpt map (p => p :< other) getOrElse false
   }
 
-  case class CaseClass(name: String, params: Seq[(String, ParamType)]) extends ScalaType {
+  case class CaseClass(name: String, params: Seq[(String, ParamType)], parentOpt: Option[ScalaType]) extends ScalaType {
+    override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
+      parentOpt map (p => p :< other) getOrElse false
 
+    override def substitute(sub: Substitution) =
+      CaseClass(name, params map { case (n, t) => (n, t.substitute(sub)) }, parentOpt) setPos pos
   }
 
   case class UnknownType(name: Identifier) extends ScalaType {
+    override def :<(other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
+      true
+    override def :>(other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
+      true
+  }
 
+  case class TVar(name: String) extends ScalaType {
+    override def substitute(sub: Substitution) = 
+      sub(this)
+
+    override lazy val freeVars = Set(this)
   }
 
   /* Tree definitions */
@@ -264,6 +400,14 @@ object Trees {
 
   sealed abstract class TreeDef() extends Tree {
     val name: String
+    var tpe: ScalaType = UnTyped
+    def getParentType: Option[ScalaType] = 
+      parent match {
+        case td: TreeDef =>
+          Some(td.tpe)
+        case _ => 
+          None
+      }
   }
 
   case class TreeBranch(name: String, myChildren: Seq[TreeDef]) extends TreeDef {

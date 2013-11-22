@@ -59,7 +59,7 @@ with DeclParser {
 
     parseAll(file, in) match {
       case Success(f, _) => f.success
-      case ns: NoSuccess => error(ns.msg)
+      case ns: NoSuccess => error(ns.msg, ns.next.pos)
     }
   }
 

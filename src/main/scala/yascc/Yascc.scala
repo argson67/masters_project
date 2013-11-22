@@ -13,4 +13,9 @@ with Settings {
   val parser = new FileParser()
 
   def readFile(fileName: String): Result[Tree] = parser.readFile(fileName)
+
+  private val phases: Seq[Result[Tree] => Result[Tree]] = List(InitPhase.apply, SetsPhase.apply, TyperPhase.apply)
+
+  def run(tree: Result[Tree]): Result[Tree] = 
+    (phases reduce (_ andThen _))(tree)
 }

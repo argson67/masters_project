@@ -11,13 +11,18 @@ object Main {
       val fname = args(0)
       val instance = new Yascc()
       val tree = instance.readFile(fname)
-      val initTree = instance.runPhase(instance.InitPhase, tree)
-      instance.runPhase(instance.SetsPhase, tree)
+      val res = instance.run(tree)
 
-      println(initTree map TreePrinter.apply)
+      println(tree map TreePrinter.apply)
       println(instance.listAll)
       println(instance.rules.filter(_.refCount == 0))
-      println(instance.rules map (r => s"${r.name}: ${r.firstSet}") mkString "\n")
+      println(instance.rules map (r => s"first(${r.name}): ${r.firstSet}") mkString "\n")
+
+      println(instance.rules map (r => s"follow(${r.name}): ${r.followSet}") mkString "\n")
+
+      println(instance.rules map (r => s"type(${r.name}): ${instance.getType(r.name).get}") mkString "\n")
+
+      println(res.printErrors)
     }
   }
 }

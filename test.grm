@@ -2,18 +2,25 @@
 xy = "5"
 yz = "true"
 
+#tree
+
+Expr {
+  Plus(op1: Expr, op2: Expr)
+  Times(op1: Expr, op2: Expr)
+}
+
 #grammar
 
-program ::= expr* -> Program
+program ::= expr*
           ;
 
-expr ::= add "*" add -> Times
+expr ::= add ["*"] add -> Times
        ;
 
-add ::= num "+" num -> Plus
+add ::= num ["+"] num -> Plus
       ;
 
-num ::= r"[0-9]+" -> Num
+num ::= r"[0-9]+"
       ;
 
 //expr ::= (5 | 10) -> Test

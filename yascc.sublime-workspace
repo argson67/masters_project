@@ -4,16 +4,76 @@
 		"selected_items":
 		[
 			[
+				"TypeApp",
+				"typeApplication	(String, FunctionType, Seq[ScalaType])"
+			],
+			[
 				"lookup",
-				"lookupRule	(String, Position)"
+				"lookupType	(Identifier, Position)"
+			],
+			[
+				"define",
+				"defineValue	(String, Position, ScalaType)"
+			],
+			[
+				"SUbsti",
+				"Substitution	(Map[TVar, ScalaType])"
+			],
+			[
+				"Error",
+				"ErrorType	"
+			],
+			[
+				"p",
+				"productions	"
+			],
+			[
+				"Err",
+				"ErrorType	"
+			],
+			[
+				"can",
+				"canonicalName	"
+			],
+			[
+				"Unkno",
+				"UnknownType	"
+			],
+			[
+				"add",
+				"addWarning	(Warning)"
+			],
+			[
+				"sof",
+				"soFarV	"
+			],
+			[
+				"a",
+				"addNode	(Set[NodeT])"
+			],
+			[
+				"collec",
+				"collectDeps	"
+			],
+			[
+				"produ",
+				"productIterator	"
+			],
+			[
+				"Subs",
+				"Substitutable	"
+			],
+			[
+				"calc",
+				"calculateAll	(Function1[Rule, Boolean])"
+			],
+			[
+				"calcul",
+				"calculateFirst	(Rule)"
 			],
 			[
 				"ErrorRule",
 				"ErrorRuleSym	"
-			],
-			[
-				"define",
-				"defineType	(String, ScalaType)"
 			],
 			[
 				"prod",
@@ -120,10 +180,6 @@
 				"TraversableOnce	"
 			],
 			[
-				"Error",
-				"ErrorApi	"
-			],
-			[
 				"Numeric",
 				"NumericTypeApi"
 			],
@@ -164,20 +220,59 @@
 	"buffers":
 	[
 		{
-			"file": "/home/argson/fa2013/cse292/week6_notes",
+			"file": "src/main/scala/yascc/analysis/Typechecker.scala",
 			"settings":
 			{
-				"buffer_size": 1450,
+				"buffer_size": 7290,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/argson/fa2013/cse292/week6_summary",
+			"file": "src/main/scala/yascc/util/substitution.scala",
 			"settings":
 			{
-				"buffer_size": 1824,
-				"line_ending": "Unix",
-				"name": "Summary:"
+				"buffer_size": 1009,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/yascc/symtab/SymbolTable.scala",
+			"settings":
+			{
+				"buffer_size": 4721,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/yascc/input/GrammarParser.scala",
+			"settings":
+			{
+				"buffer_size": 3215,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/yascc/tree/Trees.scala",
+			"settings":
+			{
+				"buffer_size": 11849,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/yascc/util/results.scala",
+			"settings":
+			{
+				"buffer_size": 4472,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/yascc/util/Implicits.scala",
+			"settings":
+			{
+				"buffer_size": 2164,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -189,7 +284,7 @@
 		[
 			[
 				"",
-				"Ensime: Notes"
+				"Ensime: Restart"
 			],
 			[
 				"Snippet: ",
@@ -222,26 +317,63 @@
 	},
 	"file_history":
 	[
-		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Init.scala",
-		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Sets.scala",
-		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/symtab/SymbolTable.scala",
-		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/settings/Settings.scala",
-		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/util/Implicits.scala",
-		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/tree/Trees.scala",
-		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/GrammarParser.scala",
-		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/tree/TreePrinters.scala",
+		"/var/tmp/.fr-qQbWMS/PASSWORD - READ ME.txt",
+		"/run/media/argson/e138ab14-5ca9-4ef2-b39e-0bfe923b04e7/cs164/pa10/browser/ibox.164",
+		"/run/media/argson/e138ab14-5ca9-4ef2-b39e-0bfe923b04e7/cs164/pa10/cs164b.grm",
+		"/run/media/argson/e138ab14-5ca9-4ef2-b39e-0bfe923b04e7/cs164/pa10/browser/bquery.164",
+		"/run/media/argson/e138ab14-5ca9-4ef2-b39e-0bfe923b04e7/cs10/words-1000.txt",
+		"/run/media/argson/e138ab14-5ca9-4ef2-b39e-0bfe923b04e7/cs10/largePrimes.txt",
+		"/home/argson/Desktop/new file (another copy)",
+		"/home/argson/Desktop/new file (copy)",
+		"/home/argson/andrey/interview_ideas",
 		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/util/results.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/DeclParser.scala",
+		"/home/argson/work/netapp/vds/src/vds/REPL.scala",
 		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/Main.scala",
 		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/Yascc.scala",
-		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Phases.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/TypeParser.scala",
 		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/FileParser.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/util/substitution.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/symtab/SymbolTable.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/tree/Trees.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Dependencies.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Phases.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Sets.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Init.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/util/Implicits.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/analysis/Typechecker.scala",
+		"/home/argson/Desktop/new file",
+		"/home/argson/work/netapp/vds/src/vds/compiler/depchecker/graph.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/tree/TreePrinter.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/settings/Settings.scala",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/GrammarParser.scala",
+		"/home/argson/rent/rajLetter2.tex",
+		"/home/argson/work/netapp/simple/src/main/tits/typechecker/TypeCheckerUnification.scala",
+		"/home/argson/work/netapp/vds/src/vds/compiler/typechecker/Substitution.scala",
+		"/home/argson/work/netapp/simple/src/main/tits/typechecker/TypeCheckerHelpers.scala",
+		"/home/argson/work/netapp/simple/src/main/tits/typechecker/TypeChecker.scala",
+		"/var/tmp/HindleyMilner.scala",
+		"/tmp/.fr-oRNqAc/README_WALLS_TNT.txt",
+		"/var/tmp/.fr-8R7OEK/brutal19.txt",
+		"/home/argson/work/netapp/grammarCompiler/src/Ast.scala",
+		"/home/argson/work/netapp/vm/main.c",
+		"/home/argson/work/netapp/vm/eval.c",
+		"/home/argson/work/netapp/vm/readFile.c",
+		"/home/argson/work/netapp/vm/print.c",
+		"/home/argson/work/netapp/vm/stack.c",
+		"/home/argson/work/netapp/vm/tables.c",
+		"/home/argson/work/netapp/vm/gc.c",
+		"/home/argson/work/netapp/vm/hashtbl.c",
+		"/home/argson/work/netapp/vm/instructions.txt",
+		"/run/media/argson/My Passport/files/tmp/jfk/jfk.srt",
+		"/home/argson/.XCompose",
+		"/home/argson/fa2013/cse292/week6_notes",
+		"/home/argson/fa2013/cse292/week6_summary",
+		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/tree/TreePrinters.scala",
 		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/symtab/Symtab.scala",
-		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/DeclParser.scala",
 		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/ParserUtils.scala",
 		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/SettingsParser.scala",
 		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/TreeParser.scala",
-		"/home/argson/ucsd/masters_project/code/src/main/scala/yascc/input/TypeParser.scala",
-		"/home/argson/fa2013/cse292/week6_notes",
 		"/home/argson/ucsd/masters_project/code/.ensime",
 		"/home/argson/ucsd/masters_project/code/build.sbt",
 		"/home/argson/work/netapp/temporals/src/main/scala/vds/Releases.scala",
@@ -280,7 +412,6 @@
 		"/home/argson/Desktop/x",
 		"/home/argson/work/netapp/vds/src/vds/compiler/parser/Lexer.scala",
 		"/home/argson/work/netapp/vds/src/vds/compiler/parser/TParser.scala",
-		"/home/argson/Desktop/new file",
 		"/home/argson/work/netapp/vds/src/vds/Main.scala",
 		"/home/argson/fa2013/cse292/week3_notes",
 		"/home/argson/ucsd/masters_project/plan",
@@ -313,42 +444,7 @@
 		"/home/argson/work/netapp/vdsNew/src/vds/util/GraphvizDrawer.scala",
 		"/home/argson/.config/sublime-text-3/Packages/User/Ensime.sublime-settings",
 		"/home/argson/.config/sublime-text-3/Packages/Ensime/Ensime.sublime-settings",
-		"/home/argson/.config/sublime-text-3/Packages/User/Default.sublime-mousemap",
-		"/home/argson/.config/sublime-text-3/Packages/User/Package Control.sublime-settings",
-		"/home/argson/.config/sublime-text-3/Packages/Ensime/Default.sublime-mousemap",
-		"/home/argson/.config/sublime-text-3/Packages/User/Default (Linux).sublime-keymap",
-		"/home/argson/.config/sublime-text-3/Packages/Ensime/Default (Linux).sublime-keymap",
-		"/home/argson/work/netapp/vdsNew/src/vds/repr/UserRepr.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/repr/CompilerRepr.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/compiler/versioning/Temporals.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/compiler/types/Kinds.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/compiler/CompilerFrontEnd.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/compiler/CompilerPass.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/compiler/Names.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/compiler/repr/UserRepr.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/compiler/repr/CompilerRepr.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/compiler/symtab/SymbolTable.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/compiler/symtab/Scopes.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/compiler/types/Implicits.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/compiler/symtab/Symbols.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/api/types/TypeSystemApi.scala",
-		"/home/argson/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
-		"/home/argson/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
-		"/home/argson/work/netapp/vdsNew/src/vds/Compiler.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/CompilerErrors.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/Names.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/trees/PatternTrees.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/trees/Trees.scala",
-		"/home/argson/work/netapp/vdsNew/.ensime",
-		"/home/argson/work/netapp/vdsNew/src/.ensime",
-		"/home/argson/work/netapp/vdsNew/src/vds/types/TypeParameters.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/types/Symbols.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/types/Types.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/types/TypeSystem.scala",
-		"/home/argson/work/netapp/vdsNew/src/vds/versioning/Releases.scala",
-		"/home/argson/netapp/simple/src/main/tits/repl/REPL.scala",
-		"/home/argson/netapp/simple/src/main/tits/instance/Instance.scala",
-		"/home/argson/netapp/simple/src/main/tits/parser/Parser.scala"
+		"/home/argson/.config/sublime-text-3/Packages/User/Default.sublime-mousemap"
 	],
 	"find":
 	{
@@ -359,6 +455,7 @@
 		"height": 90.0,
 		"where_history":
 		[
+			"/home/argson/ucsd/masters_project/code/src",
 			"/home/argson/work/netapp/vdsNew/src/",
 			"/home/argson/work/netapp/vdsNew/src/vds/repr"
 		]
@@ -368,6 +465,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"unify",
+			"getType",
+			"lookupType",
+			"override protected def _isSubtypeOf (other: ScalaType) =",
+			"collect",
+			"lookupType",
+			"override private",
+			"      \n",
+			"{\n",
+			"Epsilon",
 			"TreePrinters",
 			"children",
 			"parent",
@@ -394,9 +501,11 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) =",
+			"override protected",
 			"TreePrinter",
 			"myChildren",
 			"myParent",
@@ -425,29 +534,60 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/home/argson/fa2013/cse292/week6_notes",
+					"file": "src/main/scala/yascc/analysis/Typechecker.scala",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1450,
+						"buffer_size": 7290,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								778,
-								778
+								5169,
+								5169
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2049.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/main/scala/yascc/util/substitution.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1009,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								545,
+								545
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -456,29 +596,146 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "/home/argson/fa2013/cse292/week6_summary",
+					"buffer": 2,
+					"file": "src/main/scala/yascc/symtab/SymbolTable.scala",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1824,
+						"buffer_size": 4721,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2449,
+								2449
 							]
 						],
 						"settings":
 						{
-							"auto_name": "Summary:",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 444.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/main/scala/yascc/input/GrammarParser.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3215,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								562,
+								562
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/main/scala/yascc/tree/Trees.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11849,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1104,
+								1104
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2970.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/main/scala/yascc/util/results.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4472,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1347,
+								1347
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/main/scala/yascc/util/Implicits.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2164,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2110,
+								2110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 213.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

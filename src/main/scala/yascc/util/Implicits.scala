@@ -28,6 +28,8 @@ object Implicits {
   //implicit def optError2res(optError: Option[Error]): Result[Unit] = 
   //  optError.map(e => Result.unit.addError(e)).getOrElse(Result.unit)
 
+  // Top-down query
+
   def query(t: Tree)(f: PartialFunction[Tree, Result[Unit]]): Result[Unit] = {
     def queryChild: PartialFunction[Any, Result[Unit]] = {
       case tree: Tree => query(tree)(f)
@@ -39,4 +41,20 @@ object Implicits {
     val children = Result.chain(t.productIterator.toSeq)(queryChild)
     res :+ children
   }
+
+  // Top-down collection
+
+  def collect[T](t: Tree)(f: PartialFunction[Tree, Traversable[T]]): Traversable[T] = {
+    def collectChild: PartialFunction[Any, Traversable[T]] = {
+      case tree: Tree => collect(tree)(f)
+      case seqTree: Seq[_] => seqTree flatMap collectChild
+      case _ => Traversable.empty[T]
+    }
+
+    val res = if (f.isDefinedAt(t)) f(t) else Traversable.empty
+    val children = t.productIterator.toSeq flatMap collectChild
+    res ++ children
+  }
+
+  implicit def tToRes[T](x: T): Result[T] = x.success
 }

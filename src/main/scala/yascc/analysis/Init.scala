@@ -1,5 +1,7 @@
 package yascc.analysis
 
+import org.kiama.attribution.Attribution
+
 import yascc.tree.Trees._
 import yascc.util.{ Result, UResult }
 
@@ -15,10 +17,17 @@ trait Init {
           OK
         case decl: Declaration =>
           defineValue(decl)
-        case TreeBranch(name, _) =>
-          defineType(name, Trait(name) setPos t.pos)
-        case TreeLeaf(name, params) =>
-          defineType(name, CaseClass(name, params) setPos t.pos)
+        case tb@TreeBranch(name, _) =>
+          val parentOpt = tb.getParentType
+          val myTpe = Trait(name, parentOpt)
+          tb.tpe = myTpe
+          defineType(name, myTpe setPos t.pos)
+        case tl@TreeLeaf(name, params) =>
+          val parentOpt = tl.getParentType
+          val tpe = CaseClass(name, params, parentOpt) setPos t.pos
+          val funTpe = FunctionType(params map (_._2), tpe)
+          tl.tpe = tpe
+          defineType(name, tpe) :+ defineValue(name, t.pos, funTpe)
         case r: Rule =>
           registerRule(r)
           defineRule(r)
@@ -31,7 +40,9 @@ trait Init {
       }
 
       def apply(in: Result[Tree]): Result[Tree] = in flatMap {
-        case f: File => in :+ init(f) :+ countRefs(f)
+        case f: File => 
+          Attribution.initTree(f)
+          in :+ init(f) :+ countRefs(f)
         case other => error(s"Root of the AST is not a File but '$other'")
       }
     }

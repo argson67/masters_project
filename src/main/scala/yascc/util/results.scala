@@ -22,11 +22,18 @@ sealed abstract class Result[+T] {
   def foreach[A](f: (T) => A): Unit
   def map[A](f: (T) => A): Result[A]
   def flatMap[A](f: (T) => Result[A]): Result[A]
+  def filter(f: (T) => Boolean): Result[T]
 
   def :+[A](other: Result[A]): Result[T] = other flatMap (_ => this)
   def +:[A](other: Result[A]): Result[T] = :+(other)
 
   def get: T
+
+  def toUnit: Result[Unit] = map (_ => ())
+
+  def printErrors: String = 
+    (errors.distinct map (e => s"[\033[31merror\033[39m] ${e.msg}") mkString "\n") ++
+    (warnings.distinct map (w => s"[\033[33mwarning\033[39m] ${w.msg}") mkString "\n")
 }
 
 object Result {
@@ -70,9 +77,15 @@ case class Success[T](value: T, warnings: Seq[Warning] = Nil) extends Result[T] 
 
   def foreach[A](f: (T) => A) { f(value) }
   def map[A](f: (T) => A) = Success(f(value), warnings)
-  def flatMap[A](f: (T) => Result[A]) = f(value)
+  def flatMap[A](f: (T) => Result[A]) = 
+    warnings.foldLeft(f(value)) { (v, w) => v.addWarning(w) }
+
+  def filter(f: (T) => Boolean): Result[T] = 
+    if (f(value)) this else FatalError(errors, warnings)
 
   val get = value
+
+  //println(s"**** CREATING NEW SUCCESS($value, $warnings)")
 }
 
 sealed abstract class NoSuccess[T](errors: Seq[Error], warnings: Seq[Warning]) extends Result[T] {
@@ -94,6 +107,8 @@ case class Failure[T](value: T, errors: Seq[Error], warnings: Seq[Warning] = Nil
     case Failure(v, errs, warns) => Failure(v, errs ++ errors, warns ++ warnings)
     case FatalError(errs, warns) => FatalError(errs ++ errors, warns ++ warnings)
   }
+  def filter(f: (T) => Boolean): Result[T] = 
+    if (f(value)) this else FatalError(errors, warnings)
 
   val get = value
 }
@@ -118,6 +133,7 @@ case class FatalError(errors: Seq[Error], warnings: Seq[Warning] = Nil) extends 
   def foreach[A](f: (Nothing) => A) = ()
   def map[A](f: (Nothing) => A) = this
   def flatMap[A](f: (Nothing) => Result[A]) = this
+  def filter(f: (Nothing) => Boolean): Result[Nothing] = this
 
   def get = throw NoResultException(this)
 }

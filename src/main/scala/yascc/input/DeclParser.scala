@@ -11,7 +11,7 @@ trait DeclParser {
       identifier ~ (":" ~> scalaType) ^^ {
         case name ~ tpe => Declaration(name, tpe)
       }
-      | identifier ~ parens(repsep(scalaType, ",")) ~ (":" ~> scalaType) ^^ {
+      | identifier ~ parens(repsep(paramType, ",")) ~ (":" ~> scalaType) ^^ {
         case name ~ paramTypes ~ retType => Declaration(name, FunctionType(paramTypes, retType))
       })
 }

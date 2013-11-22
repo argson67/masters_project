@@ -1,0 +1,61 @@
+;; If your project contains a lot of files, it is advisable to enable (:disable-source-load-on-startup t)
+;; Otherwise Ensime might incur a massive lag at startup time
+;; See more information about that at http://aemoncannon.github.com/ensime/index.html
+
+(
+  :subprojects (
+    (
+      :name "YASCC"
+      :module-name "yascc"
+      :depends-on-modules (
+      
+      )
+      :package "yascc"
+      :version "0.1"
+      :compile-deps (
+        "/home/argson/.sbt/boot/scala-2.10.2/lib/scala-library.jar"
+        "/home/argson/.ivy2/cache/com.github.scopt/scopt_2.10/jars/scopt_2.10-3.1.0.jar"
+        "/home/argson/.ivy2/cache/org.scalaz/scalaz-core_2.10/jars/scalaz-core_2.10-7.0.2.jar"
+        "/home/argson/.ivy2/cache/com.googlecode.kiama/kiama_2.10/jars/kiama_2.10-1.5.1.jar"
+        "/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsinfo/dsinfo_2.10/jars/dsinfo_2.10-0.2.0.jar"
+        "/home/argson/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.10.1.jar"
+        "/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsprofile/dsprofile_2.10/jars/dsprofile_2.10-0.2.0.jar"
+        "/home/argson/.ivy2/cache/jline/jline/jars/jline-1.0.jar"
+      )
+      :runtime-deps (
+        "/home/argson/.sbt/boot/scala-2.10.2/lib/scala-library.jar"
+        "/home/argson/.ivy2/cache/com.github.scopt/scopt_2.10/jars/scopt_2.10-3.1.0.jar"
+        "/home/argson/.ivy2/cache/org.scalaz/scalaz-core_2.10/jars/scalaz-core_2.10-7.0.2.jar"
+        "/home/argson/.ivy2/cache/com.googlecode.kiama/kiama_2.10/jars/kiama_2.10-1.5.1.jar"
+        "/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsinfo/dsinfo_2.10/jars/dsinfo_2.10-0.2.0.jar"
+        "/home/argson/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.10.1.jar"
+        "/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsprofile/dsprofile_2.10/jars/dsprofile_2.10-0.2.0.jar"
+        "/home/argson/.ivy2/cache/jline/jline/jars/jline-1.0.jar"
+        "/home/argson/ucsd/masters_project/code/target/scala-2.10/classes"
+        "/home/argson/ucsd/masters_project/code/target/scala-2.10/classes"
+      )
+      :test-deps (
+        "/home/argson/.sbt/boot/scala-2.10.2/lib/scala-library.jar"
+        "/home/argson/.ivy2/cache/com.github.scopt/scopt_2.10/jars/scopt_2.10-3.1.0.jar"
+        "/home/argson/.ivy2/cache/org.scalaz/scalaz-core_2.10/jars/scalaz-core_2.10-7.0.2.jar"
+        "/home/argson/.ivy2/cache/com.googlecode.kiama/kiama_2.10/jars/kiama_2.10-1.5.1.jar"
+        "/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsinfo/dsinfo_2.10/jars/dsinfo_2.10-0.2.0.jar"
+        "/home/argson/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.10.1.jar"
+        "/home/argson/.ivy2/cache/org.bitbucket.inkytonik.dsprofile/dsprofile_2.10/jars/dsprofile_2.10-0.2.0.jar"
+        "/home/argson/.ivy2/cache/jline/jline/jars/jline-1.0.jar"
+        "/home/argson/ucsd/masters_project/code/target/scala-2.10/classes"
+        "/home/argson/ucsd/masters_project/code/target/scala-2.10/test-classes"
+      )
+      :source-roots (
+        "/home/argson/ucsd/masters_project/code/src"
+        "/home/argson/ucsd/masters_project/code/src/main/java"
+        "/home/argson/ucsd/masters_project/code/target/scala-2.10/src_managed/main"
+        "/home/argson/ucsd/masters_project/code/src/test/scala"
+        "/home/argson/ucsd/masters_project/code/src/test/java"
+        "/home/argson/ucsd/masters_project/code/target/scala-2.10/src_managed/test"
+      )
+      :target "/home/argson/ucsd/masters_project/code/target/scala-2.10/classes"
+      :test-target "/home/argson/ucsd/masters_project/code/target/scala-2.10/test-classes"
+    )
+  )
+)

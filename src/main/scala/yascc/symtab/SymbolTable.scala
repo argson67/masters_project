@@ -21,6 +21,9 @@ trait SymbolTable {
 
     class TermSymbol(val name: String, val pos: Position, val tpe: ScalaType) extends Symbol {
       val isRule: Boolean = false
+
+      def setType(newTpe: ScalaType) = 
+        TermSymbol(name, pos, newTpe)
     }
 
     object TermSymbol {
@@ -38,16 +41,17 @@ trait SymbolTable {
     case class RuleSymbol(r: Rule, override val tpe: ScalaType = UnTyped) extends TermSymbol(r.name, r.pos, tpe) {
       override val isRule = true
 
-      def setType(newTpe: ScalaType) = RuleSymbol(r, newTpe)
+      override def setType(newTpe: ScalaType) = RuleSymbol(r, newTpe)
     }
 
-    val ErrorRuleSym = RuleSymbol(ErrorRule)
+    val ErrorRuleSym = RuleSymbol(ErrorRule, ErrorType)
 
     case class TypeSymbol(name: String, tpe: ScalaType) extends Symbol {
       val pos = tpe.pos
     }
 
     val UnTypedSym = TypeSymbol("ERROR", UnTyped)
+    def unknownTypeSym(name: Identifier) = TypeSymbol(name.canonicalName, UnknownType(name))
 
     private[SymbolTable] val symtab: MMap[String, TermSymbol] = MMap.empty
     private[SymbolTable] val typetab: MMap[String, TypeSymbol] = MMap.empty
@@ -56,7 +60,7 @@ trait SymbolTable {
     def ruleExists(r: Rule): Boolean = rules contains r
     def registerRule(r: Rule): Unit = rules.add(r)
 
-    // Abstract lookup & define
+    // TODO: Abstract lookup & define
 
     def lookupRule(name: String, pos: Position = NoPosition): Result[RuleSymbol] = symtab.get(name) match {
       case Some(rs: RuleSymbol) => rs.success
@@ -69,10 +73,31 @@ trait SymbolTable {
       case _ => ErrorRuleSym.failure(s"Unresolved reference to value '$name' @ $pos", pos)
     }
 
-    def lookupType(name: String, pos: Position = NoPosition): Result[TypeSymbol] = typetab.get(name) match {
-      case Some(ts) => ts.success
-      case None => UnTypedSym.failure(s"Unresolved reference to type '$name' @ $pos", pos)
+    def lookupType(name: Identifier, pos: Position = NoPosition): Result[TypeSymbol] = name match {
+      case p: Path =>
+        unknownTypeSym(name).success.addWarning(s"Unknown type '$name'")
+      case Name(n) =>
+        typetab.get(n) match {
+          case Some(ts) => ts.success
+          case None => unknownTypeSym(name).success.addWarning(s"Unknown type '$n'")
+          //UnTypedSym.failure(s"Unresolved reference to type '$name' @ $pos", pos)
+        }
     }
+
+    def setType(name: String, tpe: ScalaType): Result[Unit] =
+      symtab.get(name) match {
+        case Some(s) => 
+          symtab(name) = s.setType(tpe)
+          OK
+        case None => 
+          failure(s"Unresolved reference to '$name'")
+      }
+
+    def getType(name: String, pos: Position = NoPosition): Result[ScalaType] = 
+      symtab.get(name) match {
+        case Some(s) => s.tpe.success
+        case None => UnTyped.failure(s"Unresolved reference to '$name' @ $pos", pos)
+      }
 
     def defineRule(r: Rule): Result[Unit] = 
       symtab.get(r.name) match {
@@ -83,10 +108,13 @@ trait SymbolTable {
       }
 
     def defineValue(decl: Declaration): Result[Unit] = 
-      symtab.get(decl.name) match {
-        case Some(term) => failure(s"Redefinition of '${term.name}' @ ${decl.pos}. Previously defined @ ${term.pos}", decl.pos)
+      defineValue(decl.name, decl.pos, decl.tpe)
+
+    def defineValue(name: String, pos: Position, tpe: ScalaType): Result[Unit] = 
+      symtab.get(name) match {
+        case Some(term) => failure(s"Redefinition of '${term.name}' @ ${pos}. Previously defined @ ${pos}", pos)
         case None => 
-          symtab(decl.name) = TermSymbol(decl.name, decl.pos, decl.tpe)
+          symtab(name) = TermSymbol(name, pos, tpe)
           OK
       }
 

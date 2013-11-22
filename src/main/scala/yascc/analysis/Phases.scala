@@ -9,7 +9,9 @@ import yascc.util.{ Result, Error, Warning }
 trait Phases extends SymbolTable
 with Settings
 with Init
-with Sets {
+with Sets 
+with Dependencies
+with Typechecker {
   self: Yascc =>
 
     trait Phase extends Function1[Result[Tree], Result[Tree]] {
