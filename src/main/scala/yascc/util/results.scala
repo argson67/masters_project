@@ -6,6 +6,8 @@ case class NoResultException(e: FatalError) extends Exception {
 
 }
 
+// this wants to be a Writer monad, basically
+
 sealed abstract class Result[+T] {
   def isSuccess: Boolean
   def isFailure: Boolean = !isSuccess

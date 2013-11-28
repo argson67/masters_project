@@ -1,0 +1,34 @@
+#tree
+
+Term {
+  Expr {
+    Plus(op1: Expr, op2: Expr)
+    Times(op1: Expr, op2: Expr)
+  }
+
+  Stmt {
+    While(cond: Expr, body: Expr)
+    IfElse(cond: Expr, ifBranch: Expr, elseBranch: Option[Expr])
+  }
+}
+
+#grammar
+
+program ::= (expr | stmt)*
+          ;
+
+stmt ::= ["while" "("] expr [")"] expr -> While
+       | ["if" "("] expr ["]"] expr (["else"] expr)? -> IfElse
+       ; 
+
+expr ::= add ["*"] add -> Times
+       ;
+
+add ::= num ["+"] num -> Plus
+      ;
+
+num ::= r"[0-9]+"
+      ;
+
+//expr ::= (5 | 10) -> Test
+//       ;

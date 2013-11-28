@@ -15,12 +15,13 @@ object Main {
 
       println(tree map TreePrinter.apply)
       println(instance.listAll)
+      
       println(instance.rules.filter(_.refCount == 0))
       println(instance.rules map (r => s"first(${r.name}): ${r.firstSet}") mkString "\n")
 
       println(instance.rules map (r => s"follow(${r.name}): ${r.followSet}") mkString "\n")
 
-      println(instance.rules map (r => s"type(${r.name}): ${instance.getType(r.name).get}") mkString "\n")
+      println(instance.rules map (r => s"type(${r.name}): ${instance.getType(r.name).get}") mkString "\n") 
 
       println(res.printErrors)
     }

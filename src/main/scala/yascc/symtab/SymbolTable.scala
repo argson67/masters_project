@@ -127,7 +127,7 @@ trait SymbolTable {
       }
 
     def listRules = "Rules:\n" + (rules mkString "\n")
-    def listTerms = "Terms:\n" + (symtab mkString "\n")
+    def listTerms = "Terms:\n" + symtab // + (symtab mkString "\n")
     def listTypes = "Types:\n" + (typetab mkString "\n")
 
     def listAll = List(listRules, listTerms, listTypes) mkString "\n\n"

@@ -64,6 +64,11 @@ case ErrorType =>
 case AnyType =>
 case NothingType =>
 
+case SeqTypeConstructor(name) =>
+case OptionTypeConstructor =>
+case OptionType(param) =>
+case SeqType(name, param) =>
+
 // Tree defs
 case TreeDefs(defs) =>
 case TreeBranch(name, myChildren) =>
@@ -108,7 +113,7 @@ object Trees {
 
   // File stuff
 
-  case class File(sections: Seq[Section]) extends Tree {
+  case class File(sections: List[Section]) extends Tree {
 
   }
 
@@ -118,24 +123,29 @@ object Trees {
 
   // Grammar stuff
 
-  case class Grammar(rules: Seq[Rule]) extends Section("grammar") {
+  case class Grammar(rules: List[Rule]) extends Section("grammar") {
 
   }
 
-  case class Rule(name: String, options: Seq[RuleOption], productions: Seq[Production]) extends Tree {
+  case class Rule(name: String, options: List[RuleOption], productions: List[Production]) extends Tree {
     var refCount: Int = 0
     var firstSet: Set[Terminal] = Set.empty
     var followSet: Set[Terminal] = Set.empty
+
+    private lazy val optionsMap = options map { ro => (ro.name, ro.value) } toMap
+
+    def hasOption(n: String) = optionsMap contains n
+    def option(n: String) = optionsMap.get(n)
   }
 
-  val ErrorRule = Rule("ERROR", Seq.empty, Seq.empty)
+  val ErrorRule = Rule("ERROR", List.empty, List.empty)
 
   case class RuleOption(name: String, value: Option[String]) extends Tree {
 
   }
 
   case class Production(body: ProductionElem, action: Action) extends Tree {
-
+    var arity: Int = -1
   }
 
   /* Production elements */
@@ -144,11 +154,11 @@ object Trees {
     def isDiscarded: Boolean = false
   }
 
-  case class Conjunction(elems: Seq[ProductionElem]) extends ProductionElem {
+  case class Conjunction(elems: List[ProductionElem]) extends ProductionElem {
     override val isDiscarded = elems.size == 1 && elems.head.isDiscarded
   }
 
-  case class Disjunction(elems: Seq[ProductionElem]) extends ProductionElem {
+  case class Disjunction(elems: List[ProductionElem]) extends ProductionElem {
     override val isDiscarded = elems.size == 1 && elems.head.isDiscarded
   }
 
@@ -277,13 +287,15 @@ object Trees {
     lazy val freeVars: Set[TVar] = Set.empty
 
     override def toString = TreePrinter(this)
+
+    val isPositional = false
   }
 
   case object UnTyped extends ScalaType {
 
   }
 
-  case class FunctionType(args: Seq[ParamType], returnType: ScalaType) extends ScalaType {
+  case class FunctionType(args: List[ParamType], returnType: ScalaType) extends ScalaType {
     override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = other match {
       case FunctionType(otherArgs, otherReturnType) =>
         Result.sequence((args zip otherArgs) map { case (t1, t2) => t2 :< t1 }) map (_.forall(identity))
@@ -311,10 +323,10 @@ object Trees {
     override lazy val freeVars = tpe.freeVars
   }
 
-  case class TupleType(elems: Seq[ScalaType]) extends ScalaType {
+  case class TupleType(elems: List[ScalaType]) extends ScalaType {
     override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = other match {
       case TupleType(otherElems) => 
-        elems zip otherElems map { case (t1, t2) => t1 :< t2 } reduce (_ && _)
+        (elems.size == otherElems.size).success && (elems zip otherElems map { case (t1, t2) => t1 :< t2 } reduce (_ && _))
       case _ => false
     }
 
@@ -339,14 +351,61 @@ object Trees {
       true
   }
 
-  case class TypeApp(constructor: ScalaType, args: Seq[ScalaType]) extends ScalaType {
+  sealed abstract class Variance
+  case object InVariant extends Variance
+  case object CoVariant extends Variance
+  case object ContraVariant extends Variance
+
+  class TypeApp(val constructor: ScalaType, val args: List[ScalaType], val variance: Variance = InVariant) extends ScalaType {
+    // For now, assume all type parameters are either covariant, contravariant, or invariant.
+
+    private def subArgs(args1: List[ScalaType], args2: List[ScalaType])(implicit lookupType: Identifier => ScalaType) : Result[Boolean] = 
+      (args1.size == args2.size).success &&
+        (args1.zip(args2) map { 
+          case (t1, t2) => 
+            (variance == InVariant && t1 == t2) ||
+            (variance == CoVariant && t1 :< t2) ||
+            (variance == ContraVariant && t1 :> t2)
+        } reduce (_ && _))
+
     override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
-      false // TODO
+      other match {
+        case TypeApp(otherConstructor, otherArgs) =>
+          constructor :< otherConstructor && subArgs(args, otherArgs)
+        case _ => false
+      } 
 
     override def substitute(sub: Substitution) =
       TypeApp(constructor.substitute(sub), args map (_ substitute sub)) setPos pos
 
     override lazy val freeVars = (args flatMap (_.freeVars) toSet) ++ constructor.freeVars
+
+    def canEqual(that: Any): Boolean = that.isInstanceOf[TypeApp]
+
+    def productArity: Int = 3
+    def productElement(n: Int): Any = List(constructor, args, variance)(n)
+  }
+
+  object TypeApp {
+    def apply(constructor: ScalaType, args: List[ScalaType]): TypeApp = 
+      new TypeApp(constructor, args)
+
+    def unapply(x: Any): Option[(ScalaType, List[ScalaType])] = x match {
+      case ta: TypeApp =>
+        Some((ta.constructor, ta.args))
+      case _ => None
+    }
+  }
+
+  case class SeqTypeConstructor(name: String) extends ScalaType
+  case object OptionTypeConstructor extends ScalaType
+
+  case class OptionType(param: ScalaType) extends TypeApp(OptionTypeConstructor, List(param), CoVariant) {
+
+  }
+
+  case class SeqType(name: String, param: ScalaType) extends TypeApp(SeqTypeConstructor(name), List(param), CoVariant) {
+
   }
 
   case class TypeProjection(tpe: ScalaType, name: String) extends ScalaType {
@@ -368,14 +427,26 @@ object Trees {
   case class Trait(name: String, parentOpt: Option[ScalaType]) extends ScalaType {
     override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
       parentOpt map (p => p :< other) getOrElse false
+
+    override val isPositional = true
   }
 
-  case class CaseClass(name: String, params: Seq[(String, ParamType)], parentOpt: Option[ScalaType]) extends ScalaType {
+  case class CaseClass(name: String, params: List[(String, ParamType)], parentOpt: Option[ScalaType]) extends ScalaType {
     override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
       parentOpt map (p => p :< other) getOrElse false
 
     override def substitute(sub: Substitution) =
       CaseClass(name, params map { case (n, t) => (n, t.substitute(sub)) }, parentOpt) setPos pos
+
+    override val isPositional = true
+  }
+
+  object UserType {
+    def unapply(t: ScalaType): Option[(String, Option[ScalaType])] = t match {
+      case Trait(name, parentOpt) => Some((name, parentOpt))
+      case CaseClass(name, _, parentOpt) => Some((name, parentOpt))
+      case _ => None
+    }
   }
 
   case class UnknownType(name: Identifier) extends ScalaType {
@@ -394,7 +465,7 @@ object Trees {
 
   /* Tree definitions */
 
-  case class TreeDefs(defs: Seq[TreeDef]) extends Section("tree") {
+  case class TreeDefs(defs: List[TreeDef]) extends Section("tree") {
 
   }
 
@@ -410,17 +481,17 @@ object Trees {
       }
   }
 
-  case class TreeBranch(name: String, myChildren: Seq[TreeDef]) extends TreeDef {
+  case class TreeBranch(name: String, myChildren: List[TreeDef]) extends TreeDef {
 
   }
 
-  case class TreeLeaf(name: String, params: Seq[(String, ParamType)]) extends TreeDef {
+  case class TreeLeaf(name: String, params: List[(String, ParamType)]) extends TreeDef {
 
   }
 
   /* Settings */
 
-  case class Settings(defs: Seq[Setting]) extends Section("settings") {
+  case class Settings(defs: List[Setting]) extends Section("settings") {
 
   }
 
@@ -430,7 +501,7 @@ object Trees {
 
   /* Declarations */
 
-  case class Declarations(decls: Seq[Declaration]) extends Section("declarations") {
+  case class Declarations(decls: List[Declaration]) extends Section("declarations") {
 
   }
 

@@ -93,8 +93,6 @@ object TreePrinter extends PrettyPrinter {
         parens(lsep(elems map printTree, comma))
       case SimpleType(name) =>
         printTree(name)
-      case TypeApp(constructor, args) =>
-        printTree(constructor) <> parens(lsep(args map printTree, comma))
       case TypeProjection(tpe, name) =>
         printTree(tpe) <> "#" <> name
 
@@ -107,6 +105,14 @@ object TreePrinter extends PrettyPrinter {
       case TVar(name) => name
       case AnyType => "Any"
       case NothingType => "Nothing"
+
+      case SeqTypeConstructor(name) => name
+      case OptionTypeConstructor => "Option"
+      case OptionType(param) => "Option" <> brackets(printTree(param))
+      case SeqType(name, param) => name <> brackets(printTree(param))
+
+      case TypeApp(constructor, args) =>
+        printTree(constructor) <> brackets(lsep(args map printTree, comma))
 
       // Tree defs
       case TreeDefs(defs) =>

@@ -57,4 +57,35 @@ object Implicits {
   }
 
   implicit def tToRes[T](x: T): Result[T] = x.success
+
+  // Bottom-up tree rewriting
+
+  // ugh... what a clusterfuck
+
+  import scala.reflect.ClassTag
+
+  private def any2AnyRef(x: Any): AnyRef = x match {
+    case ar: AnyRef => ar
+    case av => av.asInstanceOf[AnyRef]
+  }
+
+  def rewrite(t: Tree)(f: PartialFunction[Tree, Result[Tree]]): Result[Tree] = {
+    def rewriteChild: PartialFunction[Any, Result[Any]] = {
+      case t: Tree => rewrite(t)(f)
+      case seqTree: Seq[_] => Result.sequence(seqTree map rewriteChild)
+      case other => other.success
+    }
+
+    val children = Result.sequence(t.productIterator.toSeq map rewriteChild)
+    val constructor = t.getClass.getConstructors()(0)
+    val rewrittenT = children map {
+      args =>
+        constructor.newInstance((args map any2AnyRef): _*).asInstanceOf[Tree]
+    }
+
+    rewrittenT flatMap {
+      t => 
+        if (f.isDefinedAt(t)) f(t) else t.success
+    }
+  }
 }

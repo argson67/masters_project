@@ -32,7 +32,7 @@ trait TypeParser {
     // Entry point
     lazy val functionType: PackratParser[ScalaType] = positioned(
       functionArgTypes ~ ("=>" ~> scalaType) ^^ {
-        case args ~ ret => FunctionType(args, ret)
+        case args ~ ret => FunctionType(args.toList, ret)
       }
     )
 
@@ -49,15 +49,28 @@ trait TypeParser {
     }
 
     private[TypeParser] lazy val typeMods: PackratParser[TypeMorph] =
-      rep(typeArgs | typeProjection) ^^ (_.reduceOption(_ andThen _).getOrElse((x: ScalaType) => x))
+      rep(brackets(typeArgs) | typeProjection) ^^ (_.reduceOption(_ andThen _).getOrElse((x: ScalaType) => x))
+
+    private def makeTypeApp(constructor: ScalaType, args: Seq[ScalaType]) = (constructor, args) match {
+      case (OptionTypeConstructor, Seq(arg)) => OptionType(arg)
+      case (SeqTypeConstructor(name), Seq(arg)) => SeqType(name, arg)
+      case _ => TypeApp(constructor, args.toList)
+    }
+
+    private def readBasicType(id: Identifier): ScalaType = id match {
+      case Name("Option") => OptionTypeConstructor
+      case Name("Seq") => SeqTypeConstructor("Seq")
+      case Name("List") => SeqTypeConstructor("List")
+      case _ => SimpleType(id)
+    }
 
     private[TypeParser] lazy val typeArgs: PackratParser[TypeMorph] = 
-      rep1sep(scalaType, ",") ^^ (tpes => TypeApp(_: ScalaType, tpes))
+      rep1sep(scalaType, ",") ^^ (tpes => makeTypeApp(_: ScalaType, tpes))
 
     private[TypeParser] lazy val typeProjection: PackratParser[TypeMorph] =
       "#" ~> identifier ^^ (id => TypeProjection(_: ScalaType, id))
 
     private[TypeParser] lazy val simpleType: PackratParser[ScalaType] = positioned(
       parens(rep1sep(scalaType, ",")) ^^ TupleType.apply
-      | stableId ^^ SimpleType.apply)
+      | stableId ^^ readBasicType)
 }

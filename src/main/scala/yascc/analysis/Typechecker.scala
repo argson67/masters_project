@@ -33,7 +33,23 @@ trait Typechecker {
         }
       }
 
-      // ugh
+      private def checkArg(expected: ScalaType, given: ScalaType, name: String, i: Int): Result[Substitution] = {
+        (given :< expected) flatMap {
+          if (_) {
+            Substitution.empty
+          } else {
+            (expected, given) match {
+              case (v: TVar, t: ScalaType) =>
+                varAsgn(v, t) map (_._2)
+              case (t: ScalaType, v: TVar) =>
+                varAsgn(v, t) map (_._2)
+              case _ =>
+                Substitution.empty.failure(s"Illegal argument to $name in position $i. Expected $expected, given $given.")
+            }
+          }
+        }
+      }
+
       private def unify(t1: ScalaType, t2: ScalaType): Result[(ScalaType, Substitution)] = {
         (t1 :< t2) flatMap { c1 => if (c1) {
           (t2, Substitution.empty).success
@@ -45,6 +61,8 @@ trait Typechecker {
               varAsgn(v, t)
             case (t: ScalaType, v: TVar) =>
               varAsgn(v, t)
+            case (UserType(_, Some(p1)), UserType(_, Some(p2))) =>
+              unify(p1, p2)
             case _ =>
               (ErrorType, Substitution.empty).failure(s"Cannot unify $t1 and $t2")
           }
@@ -62,14 +80,17 @@ trait Typechecker {
               } else if (ts.size == 1) {
                 ts.head
               } else {
-                TupleType(ts)
+                TupleType(ts.toList)
               }
               (tpe, subs reduce (_ + _))
           }
         case Disjunction(elems) =>
           Result.sequence(elems map typeElem) flatMap superType
         case Opt(elem) =>
-          typeElem(elem)
+          typeElem(elem) map {
+            case (t, sub) =>
+              (OptionType(t), sub)
+          }
         case Commit(elem) =>
           typeElem(elem)
         case Discard(elem) =>
@@ -77,7 +98,7 @@ trait Typechecker {
         case Rep(elem, sep, strict) =>
           typeElem(elem) map {
             case (t, sub) =>
-              (TypeApp(UnknownType(Name("Seq")), Seq(t)), sub)
+              (SeqType("Seq", t), sub)
           }
         case Label(elem, label) =>
           typeElem(e)
@@ -99,20 +120,31 @@ trait Typechecker {
           (ErrorType, Substitution.empty).failure("Epsilon in production???")
       }
 
-      private def typeProduction(body: ProductionElem, action: Action): Result[(ScalaType, Substitution)] = {
+      private def typeProduction(p: Production): Result[(ScalaType, Substitution)] = {
+        val body = p.body
+        val action = p.action
+
         typeElem(body) flatMap {
-          case bodyTS@(tpe, sub) => action match {
-            case FunctionAction(fun) =>
-              val argTypes = tpe match {
-                case TupleType(ts) => ts
-                case other => Seq(other)
-              }
-              lookupFunction(fun).flatMap(f => typeApplication(fun.canonicalName, f, argTypes))
-            case CustomAction(code, t) =>
-              (t, sub).success
-            case DefaultAction =>
-              bodyTS.success
-          }
+          case bodyTS@(tpe, sub) => 
+            val arity = tpe match {
+              case TupleType(ts) => ts.length
+              case _ => 1
+            }
+
+            p.arity = arity
+            
+            action match {
+              case FunctionAction(fun) =>
+                val argTypes = tpe match {
+                  case TupleType(ts) => ts
+                  case other => Seq(other)
+                }
+                lookupFunction(fun).flatMap(f => typeApplication(fun.canonicalName, f, argTypes))
+              case CustomAction(code, t) =>
+                (t, sub).success
+              case DefaultAction =>
+                bodyTS.success
+            }
         }
       }
 
@@ -139,8 +171,8 @@ trait Typechecker {
             Substitution.empty.failure("Too few arguments to function $name")
           }
         } else {
-          unify(formals.head.tpe, actuals.head) flatMap {
-            case (_, sub) =>
+          checkArg(formals.head.tpe, actuals.head, name, i) flatMap {
+            sub =>
               val newFormals = if (formals.head.isRep) formals else formals.tail
               checkArgs(newFormals, actuals.tail, name, i+1) map (s => sub + s) 
           }
@@ -174,7 +206,7 @@ trait Typechecker {
 
       private def typeRule(r: Rule): Result[(ScalaType, Substitution)] = {
         Result.sequence(r.productions map {
-          p => typeProduction(p.body, p.action)
+          p => typeProduction(p)
         }) flatMap (seq => superType(seq))
       }
 
