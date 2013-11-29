@@ -76,16 +76,22 @@ object Implicits {
       case other => other.success
     }
 
-    val children = Result.sequence(t.productIterator.toSeq map rewriteChild)
-    val constructor = t.getClass.getConstructors()(0)
-    val rewrittenT = children map {
-      args =>
-        constructor.newInstance((args map any2AnyRef): _*).asInstanceOf[Tree]
-    }
+    if (t.productArity == 0) {
+      t
+    } else {
+      println(s"*********Rewriting $t")
 
-    rewrittenT flatMap {
-      t => 
-        if (f.isDefinedAt(t)) f(t) else t.success
+      val children = Result.sequence(t.productIterator.toSeq map rewriteChild)
+      val constructor = t.getClass.getConstructors()(0)
+      val rewrittenT = children map {
+        args =>
+          constructor.newInstance((args map any2AnyRef): _*).asInstanceOf[Tree]
+      }
+
+      rewrittenT flatMap {
+        t => 
+          if (f.isDefinedAt(t)) f(t) else t.success
+      }
     }
   }
 }

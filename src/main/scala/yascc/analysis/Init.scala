@@ -11,7 +11,7 @@ trait Init {
     object InitPhase extends Phase {
       import yascc.util.Implicits._
 
-      def init(t: Tree) = query(t) {
+      private def init(t: Tree) = query(t) {
         case Setting(name, value) => 
           setSetting(name, value)
           OK
@@ -33,16 +33,37 @@ trait Init {
           defineRule(r)
       }
 
-      def countRefs(t: Tree) = query(t) {
+      private def countRefs(t: Tree) = query(t) {
         case NonTerminal(name) =>
           for   (r <- lookupRule(name, t.pos))
           yield (r.r.refCount += 1)
       }
 
+      private def getStartRule(): Result[Unit] = {
+        val marked = rules filter (_.hasOption("start"))
+        if (marked.size == 1) {
+          startRule = marked.head.name
+          OK
+        } else if (marked.size > 1) {
+          failure("Multiple rules marked as start rules: " + (marked mkString ", "))
+        } else {
+          val noParents = rules filter (_.refCount == 0)
+          if (noParents.size == 1) {
+            startRule = noParents.head.name
+            OK
+          } else if (noParents.size > 1) {
+            failure("Multiple rules have no parents; need explicit \"start\" annotation (also, wtf?): " + (noParents mkString ", "))
+          } else {
+            failure("Loopy rule structure; need explicit \"start\" annotation")
+          }
+        }
+      }
+
       def apply(in: Result[Tree]): Result[Tree] = in flatMap {
         case f: File => 
           Attribution.initTree(f)
-          in :+ init(f) :+ countRefs(f)
+          val res = in :+ init(f) :+ countRefs(f)
+          res :+ getStartRule()
         case other => error(s"Root of the AST is not a File but '$other'")
       }
     }

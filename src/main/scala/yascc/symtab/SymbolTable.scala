@@ -13,13 +13,13 @@ trait SymbolTable {
 
     import yascc.util.Implicits._
     
-    abstract class Symbol {
+    abstract class Symbol[T <: ScalaType] {
       def name: String
       def pos: Position
-      def tpe: ScalaType
+      def tpe: T
     }
 
-    class TermSymbol(val name: String, val pos: Position, val tpe: ScalaType) extends Symbol {
+    class TermSymbol(val name: String, val pos: Position, val tpe: ScalaType) extends Symbol[ScalaType] {
       val isRule: Boolean = false
 
       def setType(newTpe: ScalaType) = 
@@ -46,16 +46,18 @@ trait SymbolTable {
 
     val ErrorRuleSym = RuleSymbol(ErrorRule, ErrorType)
 
-    case class TypeSymbol(name: String, tpe: ScalaType) extends Symbol {
+    case class TypeSymbol(name: String, tpe: TreeType) extends Symbol[TreeType] {
       val pos = tpe.pos
     }
 
     val UnTypedSym = TypeSymbol("ERROR", UnTyped)
-    def unknownTypeSym(name: Identifier) = TypeSymbol(name.canonicalName, UnknownType(name))
+    def unknownTypeSym(name: Identifier) = TypeSymbol(name.canonicalName, UnTyped)
 
     private[SymbolTable] val symtab: MMap[String, TermSymbol] = MMap.empty
     private[SymbolTable] val typetab: MMap[String, TypeSymbol] = MMap.empty
     val rules: MSet[Rule] = MSet.empty
+
+    var startRule = ""
 
     def ruleExists(r: Rule): Boolean = rules contains r
     def registerRule(r: Rule): Unit = rules.add(r)
@@ -118,7 +120,7 @@ trait SymbolTable {
           OK
       }
 
-    def defineType(name: String, tpe: ScalaType): Result[Unit] =
+    def defineType(name: String, tpe: TreeType): Result[Unit] =
       typetab.get(name) match {
         case Some(oldTpe) => failure(s"Redefinition of type '${name}' @ ${tpe.pos}. Previously defined @ ${oldTpe.pos}", oldTpe.pos)
         case None => 
@@ -131,4 +133,11 @@ trait SymbolTable {
     def listTypes = "Types:\n" + (typetab mkString "\n")
 
     def listAll = List(listRules, listTerms, listTypes) mkString "\n\n"
+
+    def numRules = symtab.values.filter(_.isRule).size
+    def numDefs = symtab.size - numRules
+    def numTrees = typetab.size
+
+    def allTypes = typetab.values map (_.tpe)
+    def allValues = symtab.values.filter(!_.isRule) map (s => (s.name, s.tpe))
 }

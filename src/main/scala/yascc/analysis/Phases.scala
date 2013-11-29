@@ -10,6 +10,7 @@ trait Phases extends SymbolTable
 with Settings
 with Init
 with Sets 
+with Rewriting
 with Dependencies
 with Typechecker {
   self: Yascc =>

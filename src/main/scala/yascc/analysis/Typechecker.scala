@@ -15,7 +15,6 @@ trait Typechecker {
 
       private implicit def _lookupType(name: Identifier): ScalaType = 
         lookupType(name).get.tpe
-
       private var _tvarCounter = 0;
       private def newTypeVar = {
         val result = s"Θ${_tvarCounter}"
@@ -113,7 +112,7 @@ trait Typechecker {
         case StringLiteral(str) =>
           (UnknownType(Name("String")), Substitution.empty).success
         case RegexLiteral(regex) =>
-          (UnknownType(Name("Regex")), Substitution.empty).success
+          (UnknownType(Name("String")), Substitution.empty).success
         case CharLiteral(c) =>
           (UnknownType(Name("Char")), Substitution.empty).success
         case Epsilon =>

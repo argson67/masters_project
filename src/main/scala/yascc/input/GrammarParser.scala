@@ -38,11 +38,17 @@ trait GrammarParser {
         case code ~ tpe => CustomAction(code.toString.slice(2, code.size - 2), tpe) 
     }
 
-    private[GrammarParser] lazy val disjunction: PackratParser[Disjunction] = 
-      positioned(rep1sep(conjunction, "|") ^^ Disjunction.apply)
+    private[GrammarParser] lazy val disjunction: PackratParser[ProductionElem] = 
+      positioned(rep1sep(conjunction, "|") ^^ {
+        case List(c) => c
+        case other => Disjunction(other)
+      })
 
-    private[GrammarParser] lazy val conjunction: PackratParser[Conjunction] = 
-      positioned(rep1(repSepTerm) ^^ Conjunction.apply)
+    private[GrammarParser] lazy val conjunction: PackratParser[ProductionElem] = 
+      positioned(rep1(repSepTerm) ^^ {
+        case List(c) => c
+        case other => Conjunction(other)
+      })
 
     // TODO: Chained terms
 

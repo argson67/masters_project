@@ -13,7 +13,7 @@ object Main {
       val tree = instance.readFile(fname)
       val res = instance.run(tree)
 
-      println(tree map TreePrinter.apply)
+      println(res map TreePrinter.apply)
       println(instance.listAll)
       
       println(instance.rules.filter(_.refCount == 0))
@@ -24,6 +24,12 @@ object Main {
       println(instance.rules map (r => s"type(${r.name}): ${instance.getType(r.name).get}") mkString "\n") 
 
       println(res.printErrors)
+      if (res.isSuccess) {
+        //println("Output: \n" + instance.ParserTarget(res.get))
+        instance.ParserTarget()
+        instance.TreesTarget()
+        instance.TreesImplTarget()
+      }
     }
   }
 }

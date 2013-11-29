@@ -33,4 +33,10 @@ trait Settings {
 
     // TODO: defaults
     //setSetting("")
+
+    setSetting("parserName", "SampleParser")
+    setSetting("packrat", "false")
+    setSetting("positioned", "false")
+    setSetting("packageName", "mypackage")
+    setSetting("textWidth", "80")
 }

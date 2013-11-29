@@ -291,8 +291,11 @@ object Trees {
     val isPositional = false
   }
 
-  case object UnTyped extends ScalaType {
+  case object UnTyped extends TreeType {
+    override val isPositional = false
 
+    val parentOpt = None
+    val name = "UnTyped"
   }
 
   case class FunctionType(args: List[ParamType], returnType: ScalaType) extends ScalaType {
@@ -424,21 +427,24 @@ object Trees {
 
   // Internal
 
-  case class Trait(name: String, parentOpt: Option[ScalaType]) extends ScalaType {
-    override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
-      parentOpt map (p => p :< other) getOrElse false
-
+  sealed abstract class TreeType extends ScalaType {
     override val isPositional = true
+    val name: String
+
+    val parentOpt: Option[TreeType]
   }
 
-  case class CaseClass(name: String, params: List[(String, ParamType)], parentOpt: Option[ScalaType]) extends ScalaType {
+  case class Trait(name: String, parentOpt: Option[TreeType]) extends TreeType {
+    override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
+      parentOpt map (p => p :< other) getOrElse false
+  }
+
+  case class CaseClass(name: String, params: List[(String, ParamType)], parentOpt: Option[TreeType]) extends TreeType {
     override protected def _isSubtypeOf (other: ScalaType)(implicit lookupType: Identifier => ScalaType) = 
       parentOpt map (p => p :< other) getOrElse false
 
     override def substitute(sub: Substitution) =
       CaseClass(name, params map { case (n, t) => (n, t.substitute(sub)) }, parentOpt) setPos pos
-
-    override val isPositional = true
   }
 
   object UserType {
@@ -471,8 +477,8 @@ object Trees {
 
   sealed abstract class TreeDef() extends Tree {
     val name: String
-    var tpe: ScalaType = UnTyped
-    def getParentType: Option[ScalaType] = 
+    var tpe: TreeType = UnTyped
+    def getParentType: Option[TreeType] = 
       parent match {
         case td: TreeDef =>
           Some(td.tpe)
