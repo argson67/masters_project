@@ -14,7 +14,7 @@ object HandParser extends Parsers {
   }
 
   lazy val statement: Parser[Stmt] = rule("statement") {
-    whileStmt | trace(ifStmt)("ifStmt") | exprStmt
+    whileStmt | ifStmt | exprStmt
   }
 
   lazy val whileStmt: Parser[Stmt] = lrule("while statement") {
@@ -25,14 +25,14 @@ object HandParser extends Parsers {
 
   lazy val ifStmt: Parser[Stmt] = lrule("if statement") {
     "if" ~!> ((recoverInsert("(") ~> expr <~ recoverInsert(")")) ~
-      (recoverInsert("{") ~> expr <~ recoverInsert("}")) ~
+      (trace(recoverInsert("{"))("recIns") ~> expr <~ recoverInsert("}")) ~
       opt("else" ~!> (recoverInsert("{") ~> expr <~ recoverInsert("}")))) ^^ {
         case cond ~ ifBranch ~ elseBranch => IfStmt(cond, ifBranch, elseBranch)
       }
   }
 
   lazy val exprStmt: Parser[Stmt] = rule("expression statement") {
-    trace(expr ^^ ExprStmt.apply)("exprStmt")
+    expr ^^ ExprStmt.apply
   }
 
   lazy val expr: Parser[Expr] = lrule("expression") {
@@ -40,11 +40,11 @@ object HandParser extends Parsers {
   }
 
   lazy val mulExpr: Parser[Expr] = rule("multiply expression") {
-    rep1sepc(trace(simpleExpr)("simpleExpr"), "*") ^^ leftAssocMultiply
+    rep1sepc(simpleExpr, "*") ^^ leftAssocMultiply
   }
 
   lazy val simpleExpr: Parser[Expr] = rule("simple expression") {
-    trace(num)("num") | ("(" ~> expr <~ ")")
+    num | ("(" ~> expr <~ ")")
   }
 
   lazy val num: Parser[Expr] = lrule("number") {

@@ -439,7 +439,16 @@ trait Parsers {
                 val exp = if (in.pos == next.pos) exp1 ++ exp2 else exp2
                 val err = err1 ++ err2
                 Success(comb(v1, v2), next2, exp, err)
-              case ns: NoSuccess => ns
+              case Failure(next2, exp2, bt, err2) =>
+                val exp = if (in.pos == next.pos) exp1 ++ exp2 else exp2
+                val err = err1 ++ err2
+                val newBt = if (in.pos == next.pos) Nil else bt
+                Failure(next2, exp, newBt, err)
+              case Error(next2, exp2, bt, err2) =>
+                val exp = if (in.pos == next.pos) exp1 ++ exp2 else exp2
+                val err = err1 ++ err2
+                val newBt = if (in.pos == next.pos) Nil else bt
+                Error(next2, exp, newBt, err)
             }
           case ns: NoSuccess => ns
         }
@@ -485,7 +494,7 @@ trait Parsers {
             p(in) match {
               case Success(_, next2, exp2, err2) if next2.pos == next.pos =>
                 Success(v, next, exp1 ++ exp2, err1 ++ err2)
-              case Failure(next2, exp2, _, err2) if next2.pos == next.pos =>
+              case NoSuccess(next2, exp2, _, err2) if next2.pos == next.pos =>
                 Success(v, next, exp1 ++ exp2, err1 ++ err2)
               case _ =>
                 s
@@ -496,7 +505,9 @@ trait Parsers {
                 Success(v, next2, exp1 ++ exp2, err1 ++ err2)
               case Failure(next2, exp2, bt2, err2) if (next.pos == in.pos && next2.pos == in.pos) =>
                   Failure(next2, exp1 ++ exp2, Nil, err1 ++ err2)
-              case other => other // error, or success or failure that consumed input
+              case Error(next2, exp2, bt2, err2) if (next.pos == in.pos && next2.pos == in.pos) =>
+                  Error(next2, exp1 ++ exp2, Nil, err1 ++ err2)
+              case other => other // error or success or failure that consumed input
             }
           case other => // error, or success that consumed input
             other
