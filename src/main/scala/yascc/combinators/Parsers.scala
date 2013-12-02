@@ -71,6 +71,8 @@ trait Parsers {
     val errors: Set[ErrorDesc]
 
     def printErrors: String
+
+    def tracePrint(spaces: String): String
   }
 
   case class Success[+T](value: T, next: Input, expected: Set[String] = Set.empty, errors: Set[ErrorDesc] = Set.empty) 
@@ -93,6 +95,11 @@ trait Parsers {
 
     def printErrors: String = 
       s"[${RED}error${RESET}] " + (errors map (_.err2str) mkString "\n\n")
+
+    def tracePrint(spaces: String): String = {
+      val data = List("-> Success!", s"Value: $value", s"Next: ${next.pos}('${next.first}')", s"Expected: $expected", s"Errors: $errors")
+      spaces + (data mkString s"\n$spaces")
+    }
   }
 
   sealed abstract class NoSuccess extends ParseResult[Nothing] with Erroneous {
@@ -110,6 +117,13 @@ trait Parsers {
     def printErrors: String = 
       s"[${RED}error${RESET}] " + err2str + (if (errors.isEmpty) "" else "\n\n") +
       (errors map (_.err2str) mkString "\n\n")
+
+    protected val myType: String
+
+    def tracePrint(spaces: String): String = {
+      val data = List(myType, s"Next: ${next.pos}('${next.first}')", s"Expected: $expected", s"Backtrace: $backtrace", s"Errors: $errors")
+      spaces + (data mkString s"\n$spaces")
+    }
   }
 
   object NoSuccess {
@@ -128,6 +142,8 @@ trait Parsers {
       } else {
         this
       }
+
+    protected val myType = "-> Failure!"
   }
 
   case class Error(next: Input, expected: Set[String] = Set.empty, backtrace: List[(Position, String)] = Nil, errors: Set[ErrorDesc] = Set.empty) 
@@ -138,6 +154,8 @@ trait Parsers {
       } else {
         this
       }
+
+    protected val myType = "-> Error!"
   }
 
   case class ~[+a, +b](_1: a, _2: b) {
@@ -323,6 +341,13 @@ trait Parsers {
       }
   }
 
+  def skipWS(in: Input): Input = {
+    val source = in.source
+    val offset = in.offset
+    val start = handleWhiteSpace(source, offset)
+    in.drop(start - offset)
+  }
+
   /** A parser that matches a regex string */
   implicit def regex(r: Regex): Parser[String] = Parser {
     in =>
@@ -386,13 +411,27 @@ trait Parsers {
   		case s => s
   	}
   }
-    
+
+  private var traceLevel = 0
+
+  def trace[T](p: => Parser[T])(name: String): Parser[T] = Parser {
+    in =>
+      val spaces = "  " * traceLevel + "** "
+      println(s"${spaces}Attempting `$name' @ ${in.pos}:")
+      traceLevel += 1
+      val res = p(in)
+      traceLevel -= 1
+      println(s"${res.tracePrint(spaces)}")
+      res
+  }
+
   abstract class Parser[+T] extends (Input => ParseResult[T]) {
     def apply(in: Input): ParseResult[T]
 
     private def seq[U, V](q: => Parser[U], comb: (T, U) => V): Parser[V] = {
       lazy val p = q
-      Parser { in =>
+      Parser { _in =>
+        val in = skipWS(_in) 
         this(in) match {
           case Success(v1, next, exp1, err1) =>
             p(next) match {
@@ -439,7 +478,8 @@ trait Parsers {
 
     def |[U >: T](q: => Parser[U]): Parser[U] = {
       lazy val p = q
-      Parser { in => 
+      Parser { _in =>
+        val in = skipWS(_in) 
         this(in) match {
           case s@Success(v, next, exp1, err1) if next.pos == in.pos => // success that consumed no input
             p(in) match {

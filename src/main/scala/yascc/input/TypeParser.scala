@@ -22,7 +22,7 @@ trait TypeParser {
     // TODO: maybe rewrite with chainl1? Although, what's the point,
     // the cast is ugly enough as it is...
     private[TypeParser] lazy val stableId: PackratParser[Identifier] = 
-      idName ~ repsep(idName, ".") ^^ {
+      idName ~ rep("." ~> idName) ^^ {
         case id ~ ids => ((id: Identifier) /: ids)(Path.apply)
       }
 

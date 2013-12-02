@@ -29,6 +29,9 @@ object Main {
         instance.ParserTarget()
         instance.TreesTarget()
         instance.TreesImplTarget()
+        instance.DefsTarget()
+        instance.DefsImplTarget()
+        instance.GrammarTarget()
       }
     }
   }

@@ -140,7 +140,8 @@ trait Dependencies {
       val res = new Graph[Set[NodeT]]()
       sccs foreach (res addNode _)
       edges foreach {
-        case (from, to) => res.addEdge((nodeMap(from), nodeMap(to)))
+        case (from, to) if nodeMap(from) != nodeMap(to) => res.addEdge((nodeMap(from), nodeMap(to)))
+        case _ =>
       }
 
       res

@@ -26,13 +26,13 @@ object Implicits {
   //implicit def optOfRes2ResOfOpt[A](opt: Option[Result[A]]) = Result.fromOption(opt)
 
   //implicit def optError2res(optError: Option[Error]): Result[Unit] = 
-  //  optError.map(e => Result.unit.addError(e)).getOrElse(Result.unit)
 
   // Top-down query
 
   def query(t: Tree)(f: PartialFunction[Tree, Result[Unit]]): Result[Unit] = {
     def queryChild: PartialFunction[Any, Result[Unit]] = {
       case tree: Tree => query(tree)(f)
+      case Some(o: Tree) => query(o)(f); OK
       case seqTree: Seq[_] => Result.chain(seqTree)(queryChild)
       case _ => OK
     }
@@ -47,6 +47,7 @@ object Implicits {
   def collect[T](t: Tree)(f: PartialFunction[Tree, Traversable[T]]): Traversable[T] = {
     def collectChild: PartialFunction[Any, Traversable[T]] = {
       case tree: Tree => collect(tree)(f)
+      case Some(o: Tree) => collect(o)(f)
       case seqTree: Seq[_] => seqTree flatMap collectChild
       case _ => Traversable.empty[T]
     }
@@ -72,6 +73,7 @@ object Implicits {
   def rewrite(t: Tree)(f: PartialFunction[Tree, Result[Tree]]): Result[Tree] = {
     def rewriteChild: PartialFunction[Any, Result[Any]] = {
       case t: Tree => rewrite(t)(f)
+      case Some(t: Tree) => rewrite(t)(f) map Some.apply
       case seqTree: Seq[_] => Result.sequence(seqTree map rewriteChild)
       case other => other.success
     }
@@ -79,10 +81,11 @@ object Implicits {
     if (t.productArity == 0) {
       t
     } else {
-      println(s"*********Rewriting $t")
-
       val children = Result.sequence(t.productIterator.toSeq map rewriteChild)
       val constructor = t.getClass.getConstructors()(0)
+
+      println(s"*********Rewriting $t")
+
       val rewrittenT = children map {
         args =>
           constructor.newInstance((args map any2AnyRef): _*).asInstanceOf[Tree]

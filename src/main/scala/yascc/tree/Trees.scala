@@ -404,11 +404,17 @@ object Trees {
   case object OptionTypeConstructor extends ScalaType
 
   case class OptionType(param: ScalaType) extends TypeApp(OptionTypeConstructor, List(param), CoVariant) {
+    override def productArity: Int = 1
+    override def productElement(n: Int): Any = List(param)(n)
 
+    override def canEqual(that: Any): Boolean = that.isInstanceOf[OptionType]
   }
 
   case class SeqType(name: String, param: ScalaType) extends TypeApp(SeqTypeConstructor(name), List(param), CoVariant) {
+    override def productArity: Int = 2
+    override def productElement(n: Int): Any = List(name, param)(n)
 
+    override def canEqual(that: Any): Boolean = that.isInstanceOf[SeqType]
   }
 
   case class TypeProjection(tpe: ScalaType, name: String) extends ScalaType {

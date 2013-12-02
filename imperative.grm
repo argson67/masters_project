@@ -1,0 +1,70 @@
+#settings
+positional = "true"
+packageName = "imperative"
+//packrat = "true" 
+
+#tree
+Term {
+  Program(stmts: Seq[Stmt])
+
+  Expr {
+    Num(n: Int)
+    Add(op1: Expr, op2: Expr)
+    Times(op1: Expr, op2: Expr)
+    Boolean(repr: String)
+  }
+
+  Stmt {
+    WhileStmt(cond: Expr, body: Expr)
+    IfStmt(cond: Expr, ifBranch: Expr, elseBranch: Option[Expr])
+    ExprStmt(e: Expr)
+  }
+}
+
+#grammar
+
+program ::= statement <+> ";" -> Program
+          ;
+
+statement ::= whileStatement
+            | ifStatement
+            | exprStatement
+            ;
+
+whileStatement[label]
+  ::= ["while"]! ["("] expr [")"] ["{"] expr ["}"] -> WhileStmt
+    ;
+
+ifStatement[label]
+  ::= ["if"]! ["("] expr [")"] ["{"] expr ["}"] (["else"]! ["{"] expr ["}"])? -> IfStmt
+    ;
+
+exprStatement ::= expr -> ExprStmt
+           ;
+
+expr[name = "expression"] 
+  ::= mulExpr <+> ["+"!] -> leftAssocAdd
+    ;
+
+mulExpr[name = "multiply expression"]
+  ::= simpleExpr <+> ["*"!] -> leftAssocMultiply
+    ;
+
+simpleExpr[name = "simple expression"]
+  ::= number | ["("!] expr [")"] | boolean
+    ;
+
+number[label]
+  ::= r"[0-9]+" -> strToInt
+    ;
+
+boolean
+  ::= "true" -> Boolean
+    | "false" -> Boolean
+    ;
+
+#declarations
+
+leftAssocAdd(Seq[Expr]): Expr
+leftAssocMultiply(Seq[Expr]): Expr
+strToInt(String): Num

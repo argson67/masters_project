@@ -13,7 +13,7 @@ trait ParserOut {
 
       private def recover(e: ProductionElem, enclosed: Boolean = false): Doc = e match {
         case NonTerminal(name) =>
-          val recSet = funCall("Set", (lookupRule(name).get.r.followSet.toSeq map printProdElem): _*)
+          val recSet = funCall("Seq", (lookupRule(name).get.r.followSet.toSeq map printProdElem): _*)
           funCall("recoverSkip", name, recSet)
         case NumberLiteral(num) =>
           funCall("recoverInsert", dquotes(num.toString))
@@ -21,6 +21,8 @@ trait ParserOut {
           funCall("recoverInsert", dquotes(str))
         case CharLiteral(c) =>
           funCall("recoverInsert", dquotes(c))
+        //case Opt(elem) => funCall("opt", recover(elem))
+        //case Conjunction(elems) => printConjunction(elems, true)
         case other => printProdElem(other, enclosed)
       }
 
@@ -41,16 +43,16 @@ trait ParserOut {
           case last :: Nil => p(last)
           case Commit(Discard(x)) :: xs if xs != Nil => 
             p(x) <+> "~!>" <+> mp(printConjunction(xs, true), xs)
-          case Discard(Commit(x)) :: xs if xs != Nil => 
-            p(x) <+> "~!>" <+> mp(printConjunction(xs, true), xs)
+          //case Discard(Commit(x)) :: xs if xs != Nil => 
+          //  p(x) <+> "~!>" <+> mp(printConjunction(xs, true), xs)
           case Commit(x) :: xs if xs != Nil =>
             p(x) <+> "~!" <+> mp(printConjunction(xs, true), xs)
           case Discard(x) :: xs if xs != Nil =>
-            p(x) <+> "~>" <+> mp(printConjunction(xs), xs)
+            p(x) <+> "~>" <+> mp(printConjunction(xs, rec), xs)
           case x1 :: Discard(x2) :: Nil =>
-            p(x1) <+> "<~" <+> printConjunction(List(x2))
+            p(x1) <+> "<~" <+> printConjunction(List(x2), rec)
           case x :: xs =>
-            p(x) <+> "~" <+> mp(printConjunction(xs), xs)
+            p(x) <+> "~" <+> mp(printConjunction(xs, rec), xs)
         })
       }
 
@@ -66,7 +68,7 @@ trait ParserOut {
           val args = for (i <- 1 to arity) yield text(s"x$i")
           "case" <+> matchCase(args) <+> "=>" <+> f <> parens1(lsep2(args, comma))
         } else {
-          "x" <+> "=>" <+> f <> "x"
+          "x" <+> "=>" <+> f <> parens1("x")
         })
       }
 
@@ -99,7 +101,7 @@ trait ParserOut {
 
       private def printRule(r: Rule): Doc = {
         val name = r.option("name").flatten.getOrElse(r.name)
-        val label = r.option("label").map(_.getOrElse(r.name))
+        val label = r.option("label").map(_.getOrElse(name))
         val tpe = lookupRule(r.name).get.tpe
 
         println(s"tpe = $tpe (${tpe.isPositional})")
@@ -148,7 +150,7 @@ trait ParserOut {
             printProdElem(elem, enclosed)
           case Rep(elem, Some(Commit(s)), strict) =>
             val f = if (strict) "rep1sepc" else "repsepc"
-            funCall(f, recover(elem), printProdElem(s), printProdElem(elem))
+            funCall(f, recover(elem), printProdElem(s), funCall("Some", printProdElem(elem)))
           case Rep(elem, Some(s), strict) =>
             val f = if (strict) "rep1sep" else "repsep"
             funCall(f, printProdElem(elem), printProdElem(s))
@@ -176,7 +178,7 @@ trait ParserOut {
         res
       }
 
-      private val imports = List("yascc.combinators._")
+      private val imports = List("yascc.combinators._", "yascc.combinators.Defaults._")
 
       private def parserFile: Doc = {
         val packageDoc = "package" <+> packageName
@@ -197,9 +199,12 @@ trait ParserOut {
           }
         }
 
+        val wsDoc = "override" <+> "protected" <+> "val" <+> "whiteSpace" <+> "=" <+> 
+          "\"\"\"" <> getSettingT[String]("whiteSpace") <> "\"\"\"" <> ".r"
+
         val rulesDocs = rules map printRule reduce (_ <@@@> _)
 
-        packageDoc <@@@> importsDoc <@@@> objDoc <+> braces1(rulesDocs <@@@> applyDoc)
+        packageDoc <@@@> importsDoc <@@@> objDoc <+> braces1(rulesDocs <@@@> wsDoc <@@@> applyDoc)
       }
 
       def output = 

@@ -5,7 +5,7 @@ import scala.language.implicitConversions
 import yascc.tree.Trees._
 import yascc.util.Result
 
-import yascc.util.Substitution
+import yascc.util._
 
 trait Typechecker {
   self: Phases =>
@@ -22,13 +22,13 @@ trait Typechecker {
         TVar(result)
       }
 
-      private def varAsgn(v: TVar, t: ScalaType): Result[(ScalaType, Substitution)] = {
-        if (v == t) {
-          (t, Substitution.empty).success
-        } else if (t.freeVars contains v) {
+      private def varAsgn(v: TVar, t: SubDirection): Result[(ScalaType, Substitution)] = {
+        if (v == t.tpe) {
+          (t.tpe, Substitution.empty).success
+        } else if (t.tpe.freeVars contains v) {
           (ErrorType, Substitution.empty).failure(s"occurs check fails: $v in $t")
         } else {
-          (t, Substitution(v -> t)).success
+          (t.tpe, Substitution(v -> t)).success
         }
       }
 
@@ -39,9 +39,13 @@ trait Typechecker {
           } else {
             (expected, given) match {
               case (v: TVar, t: ScalaType) =>
-                varAsgn(v, t) map (_._2)
+                varAsgn(v, SuperType(t)) map (_._2)
               case (t: ScalaType, v: TVar) =>
-                varAsgn(v, t) map (_._2)
+                varAsgn(v, SubType(t)) map (_._2)
+              case (OptionType(t1), OptionType(t2)) =>
+                checkArg(t1, t2, name, i)
+              case (SeqType(name1, t1), SeqType(name2, t2)) if name1 == name2 =>
+                checkArg(t1, t2, name, i)
               case _ =>
                 Substitution.empty.failure(s"Illegal argument to $name in position $i. Expected $expected, given $given.")
             }
@@ -57,9 +61,13 @@ trait Typechecker {
         } else {
           (t1, t2) match {
             case (v: TVar, t: ScalaType) =>
-              varAsgn(v, t)
+              varAsgn(v, SuperType(t))
             case (t: ScalaType, v: TVar) =>
-              varAsgn(v, t)
+              varAsgn(v, SuperType(t))
+            case (OptionType(t1), OptionType(t2)) =>
+              unify(t1, t2)
+            case (SeqType(name1, t1), SeqType(name2, t2)) if name1 == name2 =>
+              unify(t1, t2)
             case (UserType(_, Some(p1)), UserType(_, Some(p2))) =>
               unify(p1, p2)
             case _ =>
@@ -219,7 +227,7 @@ trait Typechecker {
         val subs = rulesVars map {
           case (r, v) =>
             for ( (tpe, s1) <- typeRule(r)
-                ; (_, s2) <- varAsgn(v, tpe.substitute(s1))) 
+                ; (_, s2) <- varAsgn(v, SuperType(tpe.substitute(s1)))) 
             yield s1 + s2
         }
 

@@ -10,7 +10,9 @@ trait Targets extends SymbolTable
 with Settings
 with Names
 with ParserOut 
-with TreesOut {
+with TreesOut 
+with DefsOut 
+with GrammarOut {
   self: Yascc =>
   
   import scala.language.reflectiveCalls

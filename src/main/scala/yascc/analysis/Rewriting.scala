@@ -7,7 +7,59 @@ trait Rewriting {
   self: Phases =>
 
   import yascc.util.Implicits._
-  
+
+  object RewriteTypesPhase extends Phase {
+    private def rewriteParamType(p: ParamType): ParamType = 
+      ParamType(rewriteType(p.tpe), p.isLazy, p.isRep)
+
+    private def rewriteType(t: ScalaType): ScalaType = t match {
+      // Types
+      case UnTyped => UnTyped
+      case FunctionType(args, returnType) =>
+        FunctionType(args map rewriteParamType, rewriteType(returnType))
+      case pt@ParamType(tpe, isLazy, isRep) =>
+        rewriteParamType(pt)
+      case TupleType(elems) =>
+        TupleType(elems map rewriteType)
+      case SimpleType(name) =>
+        lookupType(name) map {
+          case TypeSymbol(_, UnTyped) => UnknownType(name)
+          case TypeSymbol(_, other) => other
+        } get
+
+      case SeqTypeConstructor(name) => SeqTypeConstructor(name)
+      case OptionTypeConstructor => OptionTypeConstructor
+      case OptionType(param) => OptionType(rewriteType(param))
+      case SeqType(name, param) => SeqType(name, rewriteType(param))
+
+      case TypeApp(constructor, args) =>
+        TypeApp(rewriteType(constructor), args map rewriteType)
+      case TypeProjection(tpe, name) =>
+        TypeProjection(rewriteType(tpe), name)
+      case TVar(name) => TVar(name)
+
+      case other => other
+
+    /*  // Internal types
+
+      case Trait(name, parentOpt) =>
+      case CaseClass(name, params, parentOpt) =>
+      case UnknownType(name) =>
+      case ErrorType =>
+      case AnyType =>
+      case NothingType => */
+    }
+
+    def apply(in: Result[Tree]): Result[Tree] = {
+      val res = _allDecls map {
+        ts =>
+          setType(ts.name, rewriteType(ts.tpe))
+      } toSeq
+
+      in :+ Result.sequence(res)
+    }
+  }
+
   object RewritePhase extends Phase {
 
     // TODO: fix moar things?
@@ -32,6 +84,8 @@ trait Rewriting {
 
       case Conjunction(List(e)) => e
       case Conjunction(elems) => Conjunction(flattenConjunction(elems))
+
+      case Discard(Commit(x)) => Commit(Discard(x))
     }
 
     def apply(in: Result[Tree]): Result[Tree] = {

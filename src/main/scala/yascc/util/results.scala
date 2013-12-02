@@ -34,7 +34,7 @@ sealed abstract class Result[+T] {
   def toUnit: Result[Unit] = map (_ => ())
 
   def printErrors: String = 
-    (errors.distinct map (e => s"[\033[31merror\033[39m] ${e.msg}") mkString "\n") ++
+    (errors.distinct map (e => s"[\033[31merror\033[39m] ${e.msg} \n ${e.pos.longString}") mkString "\n") ++
     (warnings.distinct map (w => s"[\033[33mwarning\033[39m] ${w.msg}") mkString "\n")
 }
 

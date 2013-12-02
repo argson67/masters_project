@@ -1,7 +1,7 @@
 package yascc.combinators
 
 object Defaults {
-  trait Default[T] {
+  trait Default[+T] {
     def get: T
   }
 
@@ -41,7 +41,7 @@ object Defaults {
     val get = 0.0
   }
 
-  implicit val DefaultAnyRef = new Default[AnyRef] {
+  implicit def DefaultAnyRef[T >: Null <: AnyRef] = new Default[T] {
     val get = null
   }
 }

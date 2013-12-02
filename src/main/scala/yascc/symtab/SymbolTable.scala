@@ -135,9 +135,11 @@ trait SymbolTable {
     def listAll = List(listRules, listTerms, listTypes) mkString "\n\n"
 
     def numRules = symtab.values.filter(_.isRule).size
-    def numDefs = symtab.size - numRules
+    def numDefs = symtab.values.filter(s => !s.isRule && !(typetab.contains(s.name))).size
     def numTrees = typetab.size
 
     def allTypes = typetab.values map (_.tpe)
-    def allValues = symtab.values.filter(!_.isRule) map (s => (s.name, s.tpe))
+    def allValues = symtab.values.filter(!_.isRule) withFilter(s => !(typetab.contains(s.name))) map (s => (s.name, s.tpe)) 
+
+    def _allDecls = symtab.values.filter(!_.isRule)
 }

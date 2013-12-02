@@ -3,16 +3,16 @@ package yascc.output
 trait Names {
   self: Targets =>
 
-    val parserName: String = getSettingT("parserName")
-    val treesName: String = parserName + "Trees"
-    val treesImplName: String = treesName + "Impl"
-    val utilsName: String = parserName + "Utils"
-    val utilsImplName: String = parserName + "UtilsImpl"
+    def parserName: String = getSettingT("parserName")
+    def treesName: String = parserName + "Trees"
+    def treesImplName: String = treesName + "Impl"
+    def utilsName: String = parserName + "Utils"
+    def utilsImplName: String = parserName + "UtilsImpl"
 
-    val parsersTrait: String = "Parsers"
-    val packratTrait: String = "PackratParsers"
+    def parsersTrait: String = "Parsers"
+    def packratTrait: String = "PackratParsers"
 
-    val packageName: String = getSettingT("packageName")
+    def packageName: String = getSettingT("packageName")
 
-    val textWidth: Int = getSettingT("textWidth")
+    def textWidth: Int = getSettingT("textWidth")
 }

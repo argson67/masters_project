@@ -7,7 +7,7 @@ import yascc.util.{ Result, UResult }
 
 trait Init {
   self: Phases =>
-
+  
     object InitPhase extends Phase {
       import yascc.util.Implicits._
 

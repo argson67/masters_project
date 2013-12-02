@@ -86,9 +86,9 @@ trait GrammarParser {
     private[GrammarParser] lazy val simpleTerm: PackratParser[ProductionElem] = positioned(
       brackets(disjunction) ^^ Discard.apply
       | parens(disjunction) 
-      | identifier ^^ NonTerminal.apply
       | string ^^ StringLiteral.apply
       | regex ^^ RegexLiteral.apply
       | number
+      | identifier ^^ NonTerminal.apply
       )
 }

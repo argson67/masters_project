@@ -39,4 +39,6 @@ trait Settings {
     setSetting("positioned", "false")
     setSetting("packageName", "mypackage")
     setSetting("textWidth", "80")
+    setSetting("skipWhitespace", "true")
+    setSetting("whiteSpace", "[\\n\\t ]+")
 }

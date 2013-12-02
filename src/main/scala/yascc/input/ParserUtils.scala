@@ -48,7 +48,7 @@ trait ParserUtils {
     lazy val regex: PackratParser[String] = 
       "r\"(\\.|[^\\\"])*\"".r ^^ { x => x.toString.slice(2, x.size - 1) }
 
-    lazy val identifier = "[A-Za-z_][A-Za-z0-9_]+".r
+    lazy val identifier = "[A-Za-z_][A-Za-z0-9_]*".r
 
     lazy val number: PackratParser[NumberLiteral[_]] = (
       real
