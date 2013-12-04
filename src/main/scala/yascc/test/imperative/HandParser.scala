@@ -24,9 +24,9 @@ object HandParser extends Parsers {
   }
 
   lazy val ifStmt: Parser[Stmt] = lrule("if statement") {
-    "if" ~!> ((recoverInsert("(") ~> expr <~ recoverInsert(")")) ~
+    "if" ~!> trace((recoverInsert("(") ~> expr <~ recoverInsert(")")) ~
       (trace(recoverInsert("{"))("recIns") ~> expr <~ recoverInsert("}")) ~
-      opt("else" ~!> (recoverInsert("{") ~> expr <~ recoverInsert("}")))) ^^ {
+      opt("else" ~!> (recoverInsert("{") ~> expr <~ recoverInsert("}"))))("committedIf") ^^ {
         case cond ~ ifBranch ~ elseBranch => IfStmt(cond, ifBranch, elseBranch)
       }
   }
@@ -35,7 +35,7 @@ object HandParser extends Parsers {
     expr ^^ ExprStmt.apply
   }
 
-  lazy val expr: Parser[Expr] = lrule("expression") {
+  lazy val expr: Parser[Expr] = rule("expression") {
     rep1sepc(mulExpr, "+") ^^ leftAssocAdd
   }
 

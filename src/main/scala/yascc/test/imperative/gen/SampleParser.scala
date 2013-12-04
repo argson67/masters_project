@@ -5,24 +5,9 @@ import yascc.combinators.Defaults._
 
 object SampleParser extends Parsers with SampleParserTrees with SampleParserTreesImpl with SampleParserUtils with SampleParserUtilsImpl {
 
-  lazy val number: Parser[Num] = lrule("number") {
+  lazy val exprStatement: Parser[ExprStmt] = rule("exprStatement") {
     
-    "[0-9]+".r ^^ { x => strToInt.apply(x) }
-  }
-  
-  lazy val expr: Parser[Expr] = rule("expression") {
-    
-    rep1sepc(recoverSkip(mulExpr, Seq(")", "}", ";", "+"))
-      , "+"
-      , Some(mulExpr)
-      ) ^^ { x => leftAssocAdd.apply(x) }
-  }
-  
-  lazy val statement: Parser[Stmt] = rule("statement") {
-    
-    whileStatement ^^ { x => (x) } |
-    ifStatement ^^ { x => (x) } |
-    exprStatement ^^ { x => (x) }
+    expr ^^ { x => ExprStmt.apply(x) }
   }
   
   lazy val simpleExpr: Parser[Expr] = rule("simple expression") {
@@ -32,6 +17,13 @@ object SampleParser extends Parsers with SampleParserTrees with SampleParserTree
       x => (x)
     } |
     boolean ^^ { x => (x) }
+  }
+  
+  lazy val statement: Parser[Stmt] = rule("statement") {
+    
+    whileStatement ^^ { x => (x) } |
+    ifStatement ^^ { x => (x) } |
+    exprStatement ^^ { x => (x) }
   }
   
   lazy val whileStatement: Parser[WhileStmt] = lrule("whileStatement") {
@@ -45,6 +37,11 @@ object SampleParser extends Parsers with SampleParserTrees with SampleParserTree
     }
   }
   
+  lazy val number: Parser[Num] = lrule("number") {
+    
+    "[0-9]+".r ^^ { x => strToInt.apply(x) }
+  }
+  
   lazy val ifStatement: Parser[IfStmt] = lrule("ifStatement") {
     
     "if" ~!> (recoverInsert("(") ~> (recoverSkip(expr, Seq(")", "}", ";")) ~ (recoverInsert(")"
@@ -55,9 +52,17 @@ object SampleParser extends Parsers with SampleParserTrees with SampleParserTree
       ))))))) ^^ { case x1 ~ (x2 ~ x3) => IfStmt.apply(x1, x2, x3) }
   }
   
-  lazy val exprStatement: Parser[ExprStmt] = rule("exprStatement") {
+  lazy val program: Parser[Program] = rule("program") {
     
-    expr ^^ { x => ExprStmt.apply(x) }
+    rep1sep(statement, ";") ^^ { x => Program.apply(x) }
+  }
+  
+  lazy val expr: Parser[Expr] = rule("expression") {
+    
+    rep1sepc(recoverSkip(mulExpr, Seq(")", "}", "+", ";"))
+      , "+"
+      , Some(mulExpr)
+      ) ^^ { x => leftAssocAdd.apply(x) }
   }
   
   lazy val boolean: Parser[Boolean] = rule("boolean") {
@@ -72,11 +77,6 @@ object SampleParser extends Parsers with SampleParserTrees with SampleParserTree
       , "*"
       , Some(simpleExpr)
       ) ^^ { x => leftAssocMultiply.apply(x) }
-  }
-  
-  lazy val program: Parser[Program] = rule("program") {
-    
-    rep1sep(statement, ";") ^^ { x => Program.apply(x) }
   }
   
   override protected val whiteSpace = """[\n\t ]+""".r

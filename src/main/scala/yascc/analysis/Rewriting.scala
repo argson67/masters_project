@@ -64,11 +64,16 @@ trait Rewriting {
 
     // TODO: fix moar things?
 
+    private def extractDiscard(pe: ProductionElem): ProductionElem = pe match {
+      case Discard(Commit(x)) => Commit(Discard(x))
+      case other => other
+    }
+
     private def flattenConjunction(e: List[ProductionElem]): List[ProductionElem] = {
       e match {
         case Nil => Nil
         case Discard(Conjunction(es)) :: rest => 
-          (es map Discard.apply) ++ flattenConjunction(rest)
+          (es map (Discard.apply(_)).andThen(extractDiscard)) ++ flattenConjunction(rest)
         case x :: xs => x :: flattenConjunction(xs)
       }
     }

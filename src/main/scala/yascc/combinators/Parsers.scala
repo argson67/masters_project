@@ -136,24 +136,30 @@ trait Parsers {
 
   case class Failure(next: Input, expected: Set[String] = Set.empty, backtrace: List[(Position, String)] = Nil, errors: Set[ErrorDesc] = Set.empty)
   extends NoSuccess {
-    def addBacktrace(pos: Position, name: String) =
-      if (backtrace.length < MAX_BACKTRACE_DEPTH) {
-        Failure(next, expected, (pos, name) :: backtrace, errors)
+    def addBacktrace(pos: Position, name: String) = {
+      val myTrace = if (backtrace.length < MAX_BACKTRACE_DEPTH) {
+        (pos, name) :: backtrace
       } else {
-        this
+        backtrace
       }
+      
+      Failure(next, expected, myTrace, errors map (_.addBacktrace(pos, name)))
+    }
 
     protected val myType = "-> Failure!"
   }
 
   case class Error(next: Input, expected: Set[String] = Set.empty, backtrace: List[(Position, String)] = Nil, errors: Set[ErrorDesc] = Set.empty) 
   extends NoSuccess {
-    def addBacktrace(pos: Position, name: String) =
-      if (backtrace.length < MAX_BACKTRACE_DEPTH) {
-        Error(next, expected, (pos, name) :: backtrace, errors)
+    def addBacktrace(pos: Position, name: String) = {
+      val myTrace = if (backtrace.length < MAX_BACKTRACE_DEPTH) {
+        (pos, name) :: backtrace
       } else {
-        this
+        backtrace
       }
+      
+      Error(next, expected, myTrace, errors map (_.addBacktrace(pos, name)))
+    }
 
     protected val myType = "-> Error!"
   }
@@ -259,14 +265,6 @@ trait Parsers {
     }
   }
 
-/*
-  def cons[T](p: => Parser[_ <: T], q: => Parser[List[T]]): Parser[List[T]] = {
-    p ~ q ^^ {
-      case head ~ tail => head :: tail
-    }
-  }
-*/
-
   def rep1[T](p: => Parser[T]): Parser[List[T]] =
     rep1(p, p)
 
@@ -290,6 +288,18 @@ trait Parsers {
   def repsep[T](p: => Parser[T], sep: Parser[Any]): Parser[List[T]] =
     rep1sep(p, sep) | success(Nil)
 
+  def phrase[T](p: Parser[T]): Parser[T] = Parser {
+    in =>
+      p(in) match {
+        case s@Success(v, next, exp, errors) => if (next.atEnd) {
+          s
+        } else {
+          Failure(next, Set("End of source"), Nil, errors)
+        }
+        case ns: NoSuccess => ns
+      }
+  }
+
   def parse[T](p: Parser[T], in: Input): (Either[String, T], Input) =
     p(in) match {
       case s@Success(value, next, _, _) =>
@@ -305,23 +315,13 @@ trait Parsers {
     parse(p, new PagedSeqReader(PagedSeq.fromReader(in)))
 
   def parseAll[T](p: Parser[T], in: Input): Either[String, T] =
-    parse(p, in) match {
-      case (Right(v), next) => 
-        if (next.atEnd) {
-          Right(v)
-        } else {
-          val pos = next.pos
-          Left(s"[${RED}error${RESET}] End of source expected but '${next.first}' found @ line ${pos.line}, col ${pos.column}")
-        }
-      case (other, _) => 
-        other
-    }
+    parse(phrase(p), in)._1
 
   def parseAll[T](p: Parser[T], in: java.lang.CharSequence): Either[String, T] = 
-    parseAll(p, new CharSequenceReader(in))
+    parse(phrase(p), in)._1
 
   def parseAll[T](p: Parser[T], in: java.io.Reader): Either[String, T] = 
-    parseAll(p, new PagedSeqReader(PagedSeq.fromReader(in)))
+    parse(phrase(p), in)._1
 
   implicit def literal(s: String): Parser[String] = Parser {
     in =>
@@ -374,9 +374,9 @@ trait Parsers {
 
   def recoverInsert[T](p: => Parser[T], ins: => T, exp: => Set[String]): Parser[T] = Parser { in =>
   	p(in) match {
-    	case NoSuccess(errNxt, errExp, _, errs) =>
-      	val err = ErrorDesc(errNxt, errExp)
-      	Success(ins, in, exp, errs + err)
+    	case NoSuccess(errNxt, errExp, bt, errs) =>
+      	val err = ErrorDesc(errNxt, errExp, bt)
+      	Success(ins, in, Set.empty, errs + err)
     	case s => s
     }
   }
@@ -400,11 +400,11 @@ trait Parsers {
 
   def recoverSkip[T](p: => Parser[T], until: Seq[Parser[Any]])(implicit df: Default[T]): Parser[T] = Parser { in =>
   	p(in) match {
-  		case ns@NoSuccess(errNxt, errExp, _, errs) =>
+  		case ns@NoSuccess(errNxt, errExp, bt, errs) =>
   			skipUntil(until, in) match {
   				case Right(nxt) => 
-  					val err = ErrorDesc(errNxt, errExp)
-  					Success(df.get, nxt, errExp, errs + err)
+  					val err = ErrorDesc(errNxt, errExp, bt)
+  					Success(df.get, nxt, Set.empty, errs + err)
   				case Left(_) => 
   					ns
   			}
@@ -442,12 +442,12 @@ trait Parsers {
               case Failure(next2, exp2, bt, err2) =>
                 val exp = if (in.pos == next.pos) exp1 ++ exp2 else exp2
                 val err = err1 ++ err2
-                val newBt = if (in.pos == next.pos) Nil else bt
+                val newBt = if (exp != exp2) Nil else bt
                 Failure(next2, exp, newBt, err)
               case Error(next2, exp2, bt, err2) =>
                 val exp = if (in.pos == next.pos) exp1 ++ exp2 else exp2
                 val err = err1 ++ err2
-                val newBt = if (in.pos == next.pos) Nil else bt
+                val newBt = if (exp != exp2) Nil else bt
                 Error(next2, exp, newBt, err)
             }
           case ns: NoSuccess => ns
@@ -504,9 +504,9 @@ trait Parsers {
               case Success(v, next2, exp2, err2) if (next.pos == in.pos && next2.pos == in.pos) =>
                 Success(v, next2, exp1 ++ exp2, err1 ++ err2)
               case Failure(next2, exp2, bt2, err2) if (next.pos == in.pos && next2.pos == in.pos) =>
-                  Failure(next2, exp1 ++ exp2, Nil, err1 ++ err2)
+                Failure(next2, exp1 ++ exp2, Nil, err1 ++ err2)
               case Error(next2, exp2, bt2, err2) if (next.pos == in.pos && next2.pos == in.pos) =>
-                  Error(next2, exp1 ++ exp2, Nil, err1 ++ err2)
+                Error(next2, exp1 ++ exp2, Nil, err1 ++ err2)
               case other => other // error or success or failure that consumed input
             }
           case other => // error, or success that consumed input

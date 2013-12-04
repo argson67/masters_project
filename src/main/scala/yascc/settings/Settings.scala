@@ -41,4 +41,5 @@ trait Settings {
     setSetting("textWidth", "80")
     setSetting("skipWhitespace", "true")
     setSetting("whiteSpace", "[\\n\\t ]+")
+    setSetting("traceAll", "false")
 }

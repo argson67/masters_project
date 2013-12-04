@@ -99,14 +99,17 @@ trait ParserOut {
       private def printProduction(p: Production): Doc = 
         group(printProdElem(p.body) <+> "^^" <+> printAction(p.action, p.arity))
 
+      private def codeT(name: Doc, v: Doc, flag: Boolean) = if (flag) (wrap(name, v)) else v
+
       private def printRule(r: Rule): Doc = {
         val name = r.option("name").flatten.getOrElse(r.name)
         val label = r.option("label").map(_.getOrElse(name))
         val tpe = lookupRule(r.name).get.tpe
 
-        println(s"tpe = $tpe (${tpe.isPositional})")
+        //println(s"tpe = $tpe (${tpe.isPositional})")
 
         val positioned: Boolean = getSettingT("positioned") && tpe.isPositional
+        val trace: Boolean = getSettingT("traceAll") || r.hasOption("trace")
         val packrat: Boolean = getSettingT("packrat")
 
         val ruleT = (code: Doc) => label match {
@@ -119,17 +122,16 @@ trait ParserOut {
           case None => "rule" <> parens1(dquotes(name)) <+> braces1(code)
         }
 
-        val posT = if (positioned) {
-          (wrap("positioned", _: Doc)) compose ruleT
-        } else {
-          ruleT
-        }
+        val posT = codeT("positioned", _: Doc, positioned)
+        val traceT = codeT("trace", _: Doc, trace)
+
+        val T = ruleT andThen posT andThen traceT
 
         val code = (lsep(r.productions map printProduction, softline <> "|"))
 
         val parserType = (t: Doc) => (if (packrat) "PackratParser" else "Parser") <> brackets1(t) 
 
-        "lazy val" <+> r.name <> ":" <+> parserType(printType(tpe)) <+> "=" <+> posT(code)
+        "lazy val" <+> r.name <> ":" <+> parserType(printType(tpe)) <+> "=" <+> T(code)
       }
 
       private def printProdElem(pe: ProductionElem): Doc =
