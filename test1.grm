@@ -18,7 +18,7 @@ program ::= (expr | stmt)*
           ;
 
 stmt ::= ["while" "("] expr [")"] expr -> While
-       | ["if" "("] expr ["]"] expr (["else"] expr)? -> IfElse
+       | ["if" "("] expr [")"] expr (["else"] expr)? -> IfElse
        ; 
 
 expr ::= add ["*"] add -> Times

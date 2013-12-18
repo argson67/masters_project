@@ -372,7 +372,7 @@ trait Parsers {
       }
   }
 
-  def recoverInsert[T](p: => Parser[T], ins: => T, exp: => Set[String]): Parser[T] = Parser { in =>
+  def recoverInsert[T](p: => Parser[T], ins: => T): Parser[T] = Parser { in =>
   	p(in) match {
     	case NoSuccess(errNxt, errExp, bt, errs) =>
       	val err = ErrorDesc(errNxt, errExp, bt)
@@ -382,7 +382,7 @@ trait Parsers {
   }
 
   def recoverInsert(s: String): Parser[String] =
-    recoverInsert(literal(s), s, Set(s))
+    recoverInsert(literal(s), s)
 
   private def skipUntil(ps: Seq[Parser[Any]], in: Input): Either[Input, Input] = {
   	if (in.atEnd) {

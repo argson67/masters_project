@@ -32,22 +32,22 @@ statement ::= whileStatement
             ;
 
 whileStatement[label]
-  ::= ["while"]! ["("] expr [")"] ["{"] expr ["}"] -> WhileStmt
+  ::= ["while"! "("] expr [")" "{"] expr ["}"] -> WhileStmt
     ;
 
 ifStatement[label]
-  ::= ["if"]! ["("] expr [")"] ["{"] expr ["}"] (["else"]! ["{"] expr ["}"])? -> IfStmt
+  ::= ["if"! "("] expr [")" "{"] expr ["}"] (["else"! "{"] expr ["}"])? -> IfStmt
     ;
 
 exprStatement ::= expr -> ExprStmt
            ;
 
 expr[name = "expression"] 
-  ::= mulExpr <+> ["+"!] -> leftAssocAdd
+  ::= mulExpr <+> "+"! -> leftAssocAdd
     ;
 
 mulExpr[name = "multiply expression"]
-  ::= simpleExpr <+> ["*"!] -> leftAssocMultiply
+  ::= simpleExpr <+> "*"! -> leftAssocMultiply
     ;
 
 simpleExpr[name = "simple expression"]

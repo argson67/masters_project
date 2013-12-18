@@ -1,12 +1,13 @@
 #settings
-xy = "5"
-yz = "true"
+positional = "true"
+//packrat = "true"
 
 #tree
 
 Expr {
   Plus(op1: Expr, op2: Expr)
   Times(op1: Expr, op2: Expr)
+  Num(repr: String)
 }
 
 #grammar
@@ -20,8 +21,5 @@ expr ::= add ["*"] add -> Times
 add ::= num ["+"] num -> Plus
       ;
 
-num ::= r"[0-9]+"
+num ::= r"[0-9]+" -> Num
       ;
-
-//expr ::= (5 | 10) -> Test
-//       ;

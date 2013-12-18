@@ -17,3 +17,87 @@ compile
 run test.grm
 compile
 run test.grm
+compile
+run test.grm
+compile
+run test.grm
+compile
+run test.grm
+compile
+run test.grm
+compile
+ls
+run test.grm
+last compile:run
+run test.grm
+clean
+compile
+run test.grm
+last compile:run
+run test.grm
+run test1.grm
+compile
+run test1.grm
+compile
+console
+compile
+console
+ls
+compile
+run test1.grm
+clean
+compile
+run test1.grm
+compile
+run test1.grm
+compile
+run test1.grm
+console
+run test1.grm
+clean
+compile
+run test1.grm
+compile
+run test1.grm
+run test.grm
+compile
+run test.grm
+run imperative.grm
+compile
+run imperative.grm
+console
+ls
+console
+run imperative.grm
+console
+clean
+compile
+console
+run imperative.grm
+console
+run imperative.grm
+console
+run imperative.grm
+console
+run imperative.grm
+console
+run imperative.grm
+console
+run imperative.grm
+console
+run imperative.grm
+run test.grm
+ls
+console
+run imperative.grm
+console
+run imperative.grm
+console
+ls
+console
+A
+console
+ls
+compile
+run imperative.grm
+console
