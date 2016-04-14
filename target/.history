@@ -101,3 +101,14 @@ ls
 compile
 run imperative.grm
 console
+compile
+run /home/imotyash/vds/code/vdsNew/grammar/vds.grm
+compile
+run /home/imotyash/vds/code/vdsNew/grammar/vds.grm
+os]
+ensime generate
+run /home/imotyash/vds/code/vdsNew/grammar/vds.grm
+run /home/imotyash/vds/code/vdsNew/grammar/vds.grm > out
+run /home/imotyash/vds/code/vdsNew/grammar/vds.grm
+project
+run /home/imotyash/vds/code/vdsNew/grammar/vds.grm

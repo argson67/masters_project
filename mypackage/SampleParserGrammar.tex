@@ -1,0 +1,323 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage{syntax}
+\begin{document}
+\section{Grammar}
+
+\begin{grammar}
+<pattern1> ::= <varid> `as' <pattern2>
+    \alt <pattern2> `to' <pattern2>
+    \alt <pattern2>
+  
+  <defaultFunctionArgs> ::= (<functionArg> `=' <assignmentExpr>) <+> `,'
+  
+  <structuralType> ::= <structuralTypeDef>
+    \alt <classDef>
+    \alt <structuralTypeRef>
+  
+  <classBody> ::= (
+    <importStmt> |
+    <functionDecl> |
+    <varDecl> |
+    <expression>) <*> <semi>
+  
+  <modType> ::= <type> <abstractDeclarator>?
+  
+  <paramType> ::= <modType> `...'?
+  
+  <structBody> ::= `{' <structMember> <*> <semi> `}'
+  
+  <importSelector> ::= <identifier> (`=>' <identifier>)?
+  
+  <guard> ::= `if' <postfixExpr>
+  
+  <prefixOp> ::= `&'
+    \alt `*'
+    \alt `+'
+    \alt `-'
+    \alt `~'
+    \alt `!'
+  
+  <infixExpr> ::= <castExpr> <identifier> <castExpr>
+  
+  <structMember> ::= <type> <declarator>
+  
+  <classDef> ::= `class' <identifier> (`(' <functionArgs> `)')? (`extends' <stableId> (`(' <expression> <*> `,' `)')?)? (`{' <classBody> `}')?
+  
+  <functionArgTypes> ::= `(' <paramType> <*> `,' `)'
+    \alt <compoundType>
+  
+  <assignmentLhs> ::= <postfixExpr>
+  
+  <charLit> ::= r`'[^']''
+  
+  <pattern> ::= <type> <declarator>
+    \alt <type> <wildcardDecl>
+    \alt <pattern1>
+  
+  <moduleDecl> ::= `module' <identifier> (`exports' <identifier> <+> `,')?
+  
+  <releaseIntervalPat> ::= 
+    `[' |
+    `(' <release> `,' <release> 
+    `]' |
+    `)'
+  
+  <postfixMod> ::= `[' <assignmentExpr> `]'
+    \alt `(' <expression> <*> `,' `)'
+    \alt `.' <identifier>
+    \alt `->' <identifier>
+    \alt `++'
+    \alt `--'
+  
+  <versionedPattern> ::= `<' <releaseIntervalPat> `,' 
+    <type> |
+    `_' `>'
+  
+  <initializer> ::= `{' <initializer> <+> `,' `,'? `}'
+    \alt <assignmentExpr>
+  
+  <switchCase> ::= `case' <pattern> <guard>? `:' <stmtBlock>
+    \alt `default' `:' <stmtBlock>
+  
+  <frameSelector> ::= `,' <intLit>
+    \alt `,' `youngest' <intLit>
+    \alt `,' `oldest' <intLit>
+  
+  <op> ::= r`[+\\-*/%=!~^\\|><&\\\\]+'
+  
+  <functionArgs> ::= <functionArg> <+> `,' (`,' 
+    <defaultFunctionArgs> |
+    <repFunctionArg>)?
+    \alt (
+    <defaultFunctionArgs> |
+    <repFunctionArg>)?
+  
+  <expression> ::= <assignmentExpr>
+  
+  <boolLit> ::= `true'
+    \alt `false'
+  
+  <declaration> ::= <functionDecl>
+    \alt <typedefDecl>
+    \alt <varDecl>
+    \alt <typeDecl>
+  
+  <forExpr> ::= `for' `(' <expression> <*> `,' <semi> <expression> <*> `,' <semi> <expression> <*> `,' `)' <expression>
+    \alt `for' `(' <identifier> `:' <expression> `)' <expression>
+  
+  <basicType> ::= `boolean'
+    \alt `void'
+    \alt <numericType>
+  
+  <abstractDeclarator> ::= <pointer>
+    \alt <pointer>* (`(' <abstractDeclarator> `)')? <declaratorMod>+
+  
+  <wildcardDecl> ::= <pointer>* `_' <declaratorMod>*
+  
+  <type> ::= <functionType>
+    \alt <compoundType>
+    \alt `(' <functionType> `)' <abstractDeclarator>
+  
+  <switchExpr> ::= `switch' `(' <expression> `)' <switchBody>
+  
+  <varDecl> ::= <type> <initDeclarator> <+> `,'
+  
+  <declaratorMod> ::= `[' <assignmentExpr>? `]'
+  
+  <pointer> ::= `*'
+  
+  <blockOrExpr> ::= `{' <exprBlock> `}'
+    \alt <expression>
+  
+  <assignmentExpr> ::= <assignmentLhs> <+> <assignmentOp> (<assignmentOp> <condExpr>)?
+    \alt <condExpr>
+  
+  <varid> ::= r`[a-z][A-Za-z0-9$_]*'
+  
+  <primaryExpr> ::= <stableId>
+    \alt <literal>
+    \alt <ifExpr>
+    \alt <whileExpr>
+    \alt <forExpr>
+    \alt <switchExpr>
+    \alt <splitExpr>
+    \alt <lambdaExpr>
+    \alt <frameExpr>
+    \alt <tryCatchExpr>
+    \alt <jumpExpr>
+    \alt <throwExpr>
+    \alt `{' <exprBlock> `}'
+    \alt `(' <expression> `)'
+  
+  <releaseInterval> ::= 
+    `[' |
+    `(' <release> `,' <release> 
+    `]' |
+    `)'
+  
+  <typeDecl> ::= <structuralTypeDef>
+  
+  <file> ::= <header> <stmtBlock>
+  
+  <literal> ::= <realLit>
+    \alt <intLit>
+    \alt <boolLit>
+    \alt <strLit>
+    \alt <charLit>
+  
+  <versionedType> ::= `<' (<releaseInterval> `,' <modType>) <+> `;' `>'
+  
+  <enumerationType> ::= `enum' <identifier>? <enumBody>?
+  
+  <intLit> ::= r`((u|U|l|L)*)0([0-9]+)'
+    \alt r`((u|U|l|L)*)0[bB]([01]+)'
+    \alt r`((u|U|l|L)*)0[xX]([a-fA-F0-9]+)'
+    \alt r`((u|U|l|L)*)([0-9]+)'
+  
+  <castExpr> ::= `(' <modType> `)' <castExpr>
+    \alt <prefixExpr>
+  
+  <switchBody> ::= `{' <switchCase> <+> <semi> `}'
+  
+  <initDeclarator> ::= <declarator> `=' <initializer>
+    \alt <declarator>
+  
+  <stmtBlock> ::= (
+    <importStmt> |
+    <declaration> |
+    <expression>) <*> <semi>
+  
+  <simpleType> ::= <stableId> <typeArgs>*
+    \alt <basicType>
+  
+  <whileExpr> ::= `while' `(' <expression> `)' <blockOrExpr>
+    \alt `do' <expression> `while' `(' <expression> `)'
+  
+  <enumBody> ::= `{' (<identifier> (`=' <intLit>)?) <*> <semi> `}'
+  
+  <ifExpr> ::= `if' `(' <expression> `)' <expression> `else' <blockOrExpr>
+    \alt `if' `(' <expression> `)' <blockOrExpr>
+  
+  <condExpr> ::= <infixExpr> `?' <expression> `:' <condExpr>
+    \alt <infixExpr>
+  
+  <splitCase> ::= `case' <versionedPattern> <identifier> `:' <stmtBlock>
+    \alt `default' <identifier> `:' <stmtBlock>
+  
+  <numericType> ::= (
+    `signed' |
+    `unsigned')? 
+    `float' |
+    `double' |
+    `long' `double' |
+    `char' |
+    `short' `int'? |
+    `int' |
+    `long' `int'? |
+    `long' `long' `int?'
+  
+  <typedefDecl> ::= `typedef' <type> <initDeclarator> <+> `,'
+  
+  <compoundType> ::= <structuralType>
+    \alt <enumerationType>
+    \alt <versionedType>
+    \alt <simpleType>
+  
+  <frameExpr> ::= `frame' `(' <stableId> <frameSelector>? `)' <blockOrExpr>
+  
+  <stableId> ::= <identifier> <+> `.'
+  
+  <exprBlock> ::= <expression> <*> <semi>
+  
+  <splitExpr> ::= `split' `(' <expression> `)' <splitBody>
+  
+  <importExpr> ::= <stableId> `.' `_'
+    \alt <stableId> `.' <importSelectors>
+    \alt <stableId>
+  
+  <release> ::= r`[0-9]+\.[0-9]+[0-9a-zA-Z\.]*'
+  
+  <importSelectors> ::= `{' <importSelector> <+> `,' `}'
+  
+  <functionType> ::= <functionArgTypes> `=>' <modType>
+  
+  <splitBody> ::= `{' <splitCase> <+> <semi> `}'
+  
+  <polyInstantiation> ::= <stableId> <typeArgs>?
+  
+  <strLit> ::= `*string*'
+  
+  <jumpExpr> ::= `return' <expression>?
+    \alt `break'
+    \alt `continue'
+  
+  <structuralTypeRef> ::= <structTag> <polyInstantiation>
+  
+  <assignmentOp> ::= <op>
+  
+  <functionDecl> ::= `implicit'? <type> <declarator> `(' <functionArgs> `)' `{' <stmtBlock> `}'
+  
+  <semi> ::= <newline>? `;' <newline>?
+  
+  <header> ::= <packageDecl> (<semi> <moduleDecl>)?
+  
+  <identifier> ::= <varid>
+    \alt r`[A-Z$_][A-Za-z$0-9_]*'
+    \alt r``[^`]+`'
+    \alt <op>
+  
+  <realLit> ::= r`([0-9]+[Ee][+-]?[0-9]+)((f|F|l|L)?)'
+    \alt r`([0-9]*\\.[0-9]+([Ee][+-]?[0-9]+)?)((f|F|l|L)?)'
+    \alt r`([0-9]+[Ee][+-]?[0-9]+)((f|F|l|L)?)'
+  
+  <structuralTypeDef> ::= <structTag> <identifier>? <structBody>
+  
+  <newline> ::= r`\n+'
+  
+  <postfixExpr> ::= <primaryExpr> <postfixMod>*
+  
+  <typeArgs> ::= `<' <modType> <+> `,' `>'
+  
+  <structTag> ::= `struct'
+    \alt `union'
+  
+  <lambdaArgs> ::= `(' <functionArgs> `)'
+    \alt <identifier>
+  
+  <pattern2> ::= <stableId> `(' <pattern> <*> `,' `)'
+    \alt <varid>
+    \alt <stableId>
+    \alt `_'
+    \alt <literal>
+    \alt `{' <pattern> <*> `,' `}'
+    \alt `(' <pattern> `)'
+  
+  <packageDecl> ::= `package' <stableId>
+  
+  <lambdaExpr> ::= <lambdaArgs> `=>' <blockOrExpr>
+  
+  <tryCatchExpr> ::= `try' <expression> `catch' <switchBody>
+  
+  <importStmt> ::= `import' <importExpr> <+> `,'
+  
+  <throwExpr> ::= `throw' <expression>
+  
+  <declarator> ::= <pointer>* 
+    <identifier> |
+    `(' <declarator> `)' <declaratorMod>*
+  
+  <prefixExpr> ::= 
+    `++' |
+    `--' <prefixExpr>
+    \alt `sizeof' <prefixExpr>
+    \alt `sizeof' `(' <modType> `)'
+    \alt <prefixOp> <castExpr>
+    \alt <postfixExpr>
+  
+  <functionArg> ::= <type> <declarator>
+    \alt <identifier>
+  
+  <repFunctionArg> ::= <functionArg> `...'
+\end{grammar}
+
+\end{document}

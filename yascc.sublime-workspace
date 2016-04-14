@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"rules",
+				"rules	"
+			],
+			[
 				"trace",
 				"traceLevel	"
 			],
@@ -343,6 +347,39 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "src/main/scala/yascc/Yascc.scala",
+			"settings":
+			{
+				"buffer_size": 618,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/yascc/Main.scala",
+			"settings":
+			{
+				"buffer_size": 1220,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/scala/yascc/util/FollowSetPrinter.scala",
+			"settings":
+			{
+				"buffer_size": 1535,
+				"line_ending": "Unix",
+				"name": "package yascc"
+			}
+		},
+		{
+			"file": "src/main/scala/yascc/analysis/Sets.scala",
+			"settings":
+			{
+				"buffer_size": 3986,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -352,7 +389,7 @@
 		[
 			[
 				"",
-				"Ensime: Startup"
+				"Ensime: Restart"
 			],
 			[
 				"Snippet: ",
@@ -363,7 +400,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 449.0
+		"width": 392.0
 	},
 	"console":
 	{
@@ -533,6 +570,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Rule",
 			"position",
 			"rule",
 			"phrase",
@@ -653,8 +691,124 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "src/main/scala/yascc/Yascc.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 618,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								506,
+								506
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/main/scala/yascc/Main.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1220,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								693,
+								693
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/main/scala/yascc/util/FollowSetPrinter.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1535,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1207,
+								1207
+							]
+						],
+						"settings":
+						{
+							"auto_name": "package yascc",
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 78.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/main/scala/yascc/analysis/Sets.scala",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3986,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3116,
+								3116
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Scala/Scala.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 990.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],

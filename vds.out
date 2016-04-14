@@ -1,0 +1,10 @@
+Loading /usr/share/sbt/bin/sbt-launch-lib.bash
+[0m[[0minfo[0m] [0mLoading project definition from /home/imotyash/ucsd/masters_project/code/project[0m
+[0m[[0minfo[0m] [0mSet current project to YASCC (in build file:/home/imotyash/ucsd/masters_project/code/)[0m
+[0m[[0minfo[0m] [0mRunning yascc.Main [0m
+Exactly one argument required (filename)
+[0m[[32msuccess[0m] [0mTotal time: 1 s, completed Dec 28, 2013 10:39:24 PM[0m
+[0m[[31merror[0m] [0mExpected symbol[0m
+[0m[[31merror[0m] [0mNot a valid command: /[0m
+[0m[[31merror[0m] [0m/home/imotyash/vds/code/vdsNew/grammar/vds.grm[0m
+[0m[[31merror[0m] [0m ^[0m

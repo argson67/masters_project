@@ -1,0 +1,33 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage{syntax}
+\begin{document}
+\section{Grammar}
+
+\begin{grammar}
+<statement> ::= <whileStatement>
+    \alt <ifStatement>
+    \alt <exprStatement>
+  
+  <expr> ::= <mulExpr> <+> `+'
+  
+  <ifStatement> ::= `if' `(' <expr> `)' `{' <expr> `}' (`else' `{' <expr> `}')?
+  
+  <boolean> ::= `true'
+    \alt `false'
+  
+  <whileStatement> ::= `while' `(' <expr> `)' `{' <expr> `}'
+  
+  <mulExpr> ::= <simpleExpr> <+> `*'
+  
+  <program> ::= <statement> <+> `;'
+  
+  <simpleExpr> ::= <number>
+    \alt `(' <expr> `)'
+    \alt <boolean>
+  
+  <number> ::= r`[0-9]+'
+  
+  <exprStatement> ::= <expr>
+\end{grammar}
+
+\end{document}

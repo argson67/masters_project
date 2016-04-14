@@ -17,7 +17,7 @@ with Targets {
   def readFile(fileName: String): Result[Tree] = parser.readFile(fileName)
 
   private val phases: Seq[Result[Tree] => Result[Tree]] = 
-    List(RewritePhase.apply, InitPhase.apply, RewriteTypesPhase.apply, SetsPhase.apply, TyperPhase.apply)
+    List(RewritePhase.apply, InitPhase.apply, RewriteTypesPhase.apply, SetsPhase.apply)//, TyperPhase.apply)
 
   def run(tree: Result[Tree]): Result[Tree] = 
     (phases reduce (_ andThen _))(tree)

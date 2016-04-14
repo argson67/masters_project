@@ -71,11 +71,11 @@ trait Sets {
           case Rep(elem, sep, strict) =>
             sep match {
               case Some(s) =>
-                val sFollow = follow(s, after ++ first(elem))
-                val eFollow = follow(elem, after ++ first(s))
+                val sFollow = follow(s, after ++ first(elem) - Epsilon)
+                val eFollow = follow(elem, after ++ first(s) - Epsilon)
                 sFollow || eFollow
               case None =>
-                follow(elem, after ++ first(elem))
+                follow(elem, after ++ first(elem) - Epsilon)
             }
           case Label(elem, label) =>
             follow(elem, after)
